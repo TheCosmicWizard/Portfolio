@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Times+New+Roman:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .font-oswald {
+        font-family: "Oswald", sans-serif;
+      }
+      .font-times {
+        font-family: "Times New Roman", serif;
+      }
+
+      .gradient-text {
+        background: linear-gradient(45deg, #22d3ee, #a855f7, #ec4899);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientShift 4s ease-in-out infinite;
+      }
+
+      .typing-text {
+        overflow: hidden;
+        border-right: 2px solid #22d3ee;
+        white-space: nowrap;
+        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .glow-effect {
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+        animation: pulse-glow 2s ease-in-out infinite alternate;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(34, 211, 238, 0.6);
+        border-radius: 50%;
+        animation: float 4s ease-in-out infinite;
+      }
+
+      .glass-card {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background: rgba(30, 41, 59, 0.95);
+        border: 1px solid rgba(71, 85, 105, 0.5);
+        transition: all 0.3s ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border-color: rgba(34, 211, 238, 0.5);
+      }
+
+      .contact-method-card {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background: rgba(30, 41, 59, 0.95);
+        border: 1px solid rgba(71, 85, 105, 0.5);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-method-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-color),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .contact-method-card:hover::before {
+        opacity: 1;
+      }
+
+      .contact-method-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border-color: var(--accent-color);
+      }
+
+      /* Contact method specific colors */
+      .email-card {
+        --accent-color: #22d3ee;
+      }
+
+      .linkedin-card {
+        --accent-color: #ec4899;
+      }
+
+      .github-card {
+        --accent-color: #a855f7;
+      }
+
+      .phone-card {
+        --accent-color: #22c55e;
+      }
+
+      .location-card {
+        --accent-color: #fbbf24;
+      }
+
+      .availability-card {
+        --accent-color: #f97316;
+      }
+
+      .contact-link {
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+
+      .contact-link:hover {
+        color: var(--accent-color);
+        transform: scale(1.05);
+      }
+
+      .icon-container {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        background: rgba(71, 85, 105, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .contact-method-card:hover .icon-container {
+        background: var(--accent-color);
+        transform: scale(1.1);
+        box-shadow: 0 0 20px var(--accent-color);
+      }
+
+      .contact-method-card:hover .icon-container svg {
+        color: white;
+      }
+
+      /* Status indicators */
+      .status-indicator {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      .status-available {
+        background: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+
+      .status-busy {
+        background: rgba(251, 191, 36, 0.2);
+        color: #fbbf24;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        animation: pulse 2s infinite;
+      }
+
+      .stagger-animation {
+        animation-delay: var(--delay);
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #22d3ee;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulse-glow {
+        0% {
+          box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+        }
+        100% {
+          box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .bg-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .section-divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(71, 85, 105, 0.5),
+          transparent
+        );
+        margin: 3rem 0;
+      }
+
+      .contact-form {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background: rgba(30, 41, 59, 0.95);
+        border: 1px solid rgba(71, 85, 105, 0.5);
+      }
+
+      .form-input {
+        background: rgba(71, 85, 105, 0.3);
+        border: 1px solid rgba(71, 85, 105, 0.5);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #22d3ee;
+        box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+      }
+
+      .form-input::placeholder {
+        color: rgba(148, 163, 184, 0.7);
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, #22d3ee, #a855f7);
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(34, 211, 238, 0.3);
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen overflow-x-hidden font-times"
+  >
+    <!-- Navigation Menu Button -->
+    <div class="fixed top-6 right-6 z-50">
+      <button
+        id="menuToggle"
+        class="w-12 h-12 bg-slate-800/90 backdrop-blur-lg rounded-full border border-slate-600/50 flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:bg-slate-700/90 glow-effect"
+      >
+        <div
+          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
+          id="line1"
+        ></div>
+        <div
+          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
+          id="line2"
+        ></div>
+        <div
+          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
+          id="line3"
+        ></div>
+      </button>
+    </div>
+
+    <!-- Sliding Menu -->
+    <div
+      id="slideMenu"
+      class="fixed top-0 right-0 h-full w-80 bg-slate-800/95 backdrop-blur-xl border-l border-slate-600/50 transform translate-x-full transition-transform duration-500 z-40"
+    >
+      <div class="p-8 h-full flex flex-col">
+        <h3 class="text-2xl font-display gradient-text mb-8 mt-16">
+          Navigation
+        </h3>
+        <nav class="flex flex-col gap-4">
+          <a
+            href="index.html"
+            class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30"
+            >🏠 Home</a
+          >
+          <a
+            href="education.html"
+            class="text-cyan-400 bg-cyan-400/10 border border-cyan-400/30 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg"
+            >🎓 Education</a
+          >
+          <a
+            href="experience.html"
+            class="text-gray-300 hover:text-violet-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-violet-400/10 border border-transparent hover:border-violet-400/30"
+            >💼 Experience</a
+          >
+          <a
+            href="skills.html"
+            class="text-gray-300 hover:text-violet-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-violet-400/10 border border-transparent hover:border-violet-400/30"
+            >🛠️ Skills & Learning</a
+          >
+          <a
+            href="projects.html"
+            class="text-gray-300 hover:text-pink-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-pink-400/10 border border-transparent hover:border-pink-400/30"
+            >🚀 Projects</a
+          >
+          <a
+            href="contact.html"
+            class="text-gray-300 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-emerald-400/10 border border-transparent hover:border-emerald-400/30"
+            >📞 Contact</a
+          >
+        </nav>
+      </div>
+    </div>
+
+    <!-- Background Particles -->
+    <div class="bg-particles">
+      <div
+        class="particle"
+        style="top: 10%; left: 20%; animation-delay: 0s"
+      ></div>
+      <div
+        class="particle"
+        style="top: 30%; left: 80%; animation-delay: 1s"
+      ></div>
+      <div
+        class="particle"
+        style="top: 60%; left: 15%; animation-delay: 2s"
+      ></div>
+      <div
+        class="particle"
+        style="top: 80%; left: 70%; animation-delay: 0.5s"
+      ></div>
+      <div
+        class="particle"
+        style="top: 25%; left: 50%; animation-delay: 1.5s"
+      ></div>
+      <div
+        class="particle"
+        style="top: 70%; left: 90%; animation-delay: 2.5s"
+      ></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 min-h-screen px-6 py-12">
+      <!-- Current Status Section -->
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2
+          class="font-oswald font-light text-3xl md:text-4xl gradient-text mb-8"
+        >
+          Current Status
+        </h2>
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <div class="status-indicator status-available">
+            <div class="status-dot bg-green-400"></div>
+            Available for freelance projects
+          </div>
+          <div class="status-indicator status-available">
+            <div class="status-dot bg-green-400"></div>
+            Open to full-time opportunities
+          </div>
+          <div class="status-indicator status-busy">
+            <div class="status-dot bg-yellow-400"></div>
+            Response time: 24-72 hours
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Divider -->
+      <div class="section-divider"></div>
+      <!-- Contact Methods Section -->
+      <div class="max-w-8xl mx-auto mb-16">
+        <h2
+          class="font-oswald font-light text-4xl md:text-5xl gradient-text text-center mb-12"
+        >
+          Contact Methods
+        </h2>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
+          <!-- Email Card -->
+          <div
+            class="contact-method-card email-card rounded-2xl p-8 stagger-animation"
+            style="--delay: 0.1s"
+          >
+            <div class="text-center">
+              <div class="icon-container">
+                <svg
+                  class="w-8 h-8 text-cyan-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                  ></path>
+                  <path
+                    d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-oswald font-medium text-2xl text-white mb-3">
+                Email
+              </h3>
+              <a href="mailto:kadamatharva1234@gmail.com" class="contact-link">
+                <p class="text-slate-300 text-sm break-all">
+                  kadamatharva1234@gmail.com
+                </p>
+              </a>
+              <p class="text-slate-400 text-xs mt-3">Primary communication</p>
+            </div>
+          </div>
+
+          <!-- LinkedIn Card -->
+
+          <div
+            class="contact-method-card linkedin-card rounded-2xl p-8 stagger-animation"
+            style="--delay: 0.2s"
+          >
+            <a href="https://www.linkedin.com/in/atharvkadam22">
+              <div class="text-center">
+                <div class="icon-container">
+                  <svg
+                    class="w-8 h-8 text-pink-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="font-oswald font-medium text-2xl text-white mb-3">
+                  LinkedIn
+                </h3>
+                <a href="#" class="contact-link">
+                  <p class="text-slate-300 text-sm">Professional Network</p>
+                </a>
+                <p class="text-slate-400 text-xs mt-3">Career opportunities</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- GitHub Card -->
+          <div
+            class="contact-method-card github-card rounded-2xl p-8 stagger-animation"
+            style="--delay: 0.3s"
+          >
+            <a href="https://github.com/TheCosmicWizard">
+              <div class="text-center">
+                <div class="icon-container">
+                  <svg
+                    class="w-8 h-8 text-purple-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="font-oswald font-medium text-2xl text-white mb-3">
+                  GitHub
+                </h3>
+                <a href="#" class="contact-link">
+                  <p class="text-slate-300 text-sm">Code Repository</p>
+                </a>
+                <p class="text-slate-400 text-xs mt-3">
+                  Projects & contributions
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Location Card -->
+          <div
+            class="contact-method-card location-card rounded-2xl p-8 stagger-animation"
+            style="--delay: 0.5s"
+          >
+            <div class="text-center">
+              <div class="icon-container">
+                <svg
+                  class="w-8 h-8 text-yellow-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-oswald font-medium text-2xl text-white mb-3">
+                Location
+              </h3>
+              <p class="text-slate-300 text-sm">Pune, Maharashtra</p>
+              <p class="text-slate-400 text-xs mt-3">
+                Available for remote work
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const slideMenu = document.getElementById("slideMenu");
+      const line1 = document.getElementById("line1");
+      const line2 = document.getElementById("line2");
+      const line3 = document.getElementById("line3");
+      let isMenuOpen = false;
+
+      menuToggle.addEventListener("click", () => {
+        isMenuOpen = !isMenuOpen;
+        slideMenu.style.transform = isMenuOpen
+          ? "translateX(0)"
+          : "translateX(100%)";
+
+        // Animate hamburger icon
+        line1.style.transform = isMenuOpen
+          ? "rotate(45deg) translate(5px, 5px)"
+          : "rotate(0)";
+        line2.style.opacity = isMenuOpen ? "0" : "1";
+        line3.style.transform = isMenuOpen
+          ? "rotate(-45deg) translate(7px, -6px)"
+          : "rotate(0)";
+      });
+
+      // Typing effect
+      document.addEventListener("DOMContentLoaded", () => {
+        const typingElement = document.querySelector(".typing-text");
+        if (typingElement) {
+          const text = "Let's connect and create something amazing together";
+          typingElement.textContent = "";
+          let i = 0;
+          const typeWriter = () => {
+            if (i < text.length) {
+              typingElement.textContent += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 50);
+            }
+          };
+          setTimeout(typeWriter, 500);
+        }
+      });
+
+      // Scroll animation
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      );
+
+      document
+        .querySelectorAll(".fade-in-up, .stagger-animation")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+
+      // Card hover effects
+      document.querySelectorAll(".contact-method-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-8px) scale(1.02)";
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0) scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>

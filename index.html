@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atharv Kadam - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Oswald", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(34, 197, 94, 0.6),
+            0 0 40px rgba(34, 197, 94, 0.3);
+        }
+      }
+
+      .typing-cursor {
+        animation: blink 1s infinite;
+      }
+
+      .scroll-snap-container {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100vh;
+      }
+
+      .scroll-snap-section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .glow-effect {
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      body {
+        font-family: "Times New Roman", serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      }
+
+      .gradient-text {
+        background: linear-gradient(45deg, #22d3ee, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient-shift 3s ease-in-out infinite;
+      }
+
+      @keyframes gradient-shift {
+        0%,
+        100% {
+          filter: hue-rotate(0deg);
+        }
+        50% {
+          filter: hue-rotate(90deg);
+        }
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden">
+    <div class="scroll-snap-container">
+      <!-- Section 1: Typing Animation -->
+      <section
+        class="scroll-snap-section h-screen flex flex-col justify-center items-center bg-gradient-to-t from-slate-900 to-slate-800 text-white relative overflow-hidden"
+      >
+        <!-- Background particles effect -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div
+            class="absolute top-1/4 left-1/4 w-2 h-2 bg-green-400 rounded-full opacity-30 float-animation"
+          ></div>
+          <div
+            class="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 float-animation"
+            style="animation-delay: 1s"
+          ></div>
+          <div
+            class="absolute top-1/2 right-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-20 float-animation"
+            style="animation-delay: 2s"
+          ></div>
+        </div>
+
+        <h1
+          class="text-6xl md:text-8xl font-light tracking-wider mb-12 text-center gradient-text"
+        >
+          Atharv Kadam
+        </h1>
+
+        <div
+          class="text-2xl md:text-3xl font-normal text-gray-200 flex items-center gap-2"
+        >
+          <span>I am</span>
+          <span
+            id="typingText"
+            class="text-green-400 min-w-fit font-semibold"
+          ></span>
+          <span id="cursor" class="typing-cursor text-green-400 text-3xl"
+            >|</span
+          >
+        </div>
+
+        <!-- Enhanced scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div
+            class="w-12 h-12 border-2 border-green-400 rounded-full flex items-center justify-center animate-bounce glow-effect"
+          >
+            <svg
+              class="w-6 h-6 text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m19 14l-7 7m0 0l-7-7m7 7V3"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Profile Card -->
+      <section
+        class="scroll-snap-section h-screen flex flex-col justify-center items-center bg-gradient-to-t from-slate-800 to-slate-900 to-slate-900 text-white relative p-4"
+      >
+        <div
+          id="profileCard"
+          class="bg-slate-800/95 backdrop-blur-xl rounded-3xl p-6 border border-slate-600/50 shadow-2xl max-w-4xl w-full card-hover transition-all duration-300"
+        >
+          <!-- Profile Header -->
+          <div
+            class="flex items-start gap-8 mb-2 rounded-2xl p-6 border border-slate-500/30 bg-slate-700/30"
+          >
+            <div
+              class="w-32 h-36 bg-gradient-to-br from-gray-300 to-gray-400 rounded-2xl flex items-center justify-center text-gray-600 font-medium text-sm flex-shrink-0 relative overflow-hidden"
+            >
+              <span class="z-10"><img src="IMG/ID.jpg" /></span>
+              <div
+                class="absolute bottom-2 right-2 w-5 h-5 bg-green-500 rounded-full border-3 border-white shadow-lg"
+              ></div>
+            </div>
+            <div class="flex-1">
+              <h2
+                class="font-display text-white mb-4 text-4xl lg:text-5xl gradient-text"
+              >
+                Atharv Kadam
+              </h2>
+              <p
+                class="text-yellow-400 leading-relaxed text-xl bg-yellow-400/10 p-3 rounded-lg"
+              >
+                Pursuing B.Tech at Vishwakarma Institute of Information
+                Technology (VIIT), Pune.
+              </p>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div
+            class="flex gap-6 text-lg text-gray-300 justify-center mb-4 flex-wrap rounded-2xl p-4 border border-slate-500/30 bg-slate-700/20"
+          >
+            <a
+              href="./index.html"
+              class="hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-110 px-3 py-2 rounded-lg hover:bg-cyan-400/10"
+              >Home</a
+            >
+            <a
+              href="./education.html"
+              class="hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-110 px-3 py-2 rounded-lg hover:bg-cyan-400/10"
+              >Education</a
+            >
+            <a
+              href="./experience.html"
+              class="hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-110 px-3 py-2 rounded-lg hover:bg-cyan-400/10"
+              >Experience</a
+            >
+            <a
+              href="./skills.html"
+              class="hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-110 px-3 py-2 rounded-lg hover:bg-cyan-400/10"
+              >Skills & Learning</a
+            >
+            <a
+              href="./projects.html"
+              class="hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-110 px-3 py-2 rounded-lg hover:bg-cyan-400/10"
+              >Projects</a
+            >
+            <a
+              href="./contact.html"
+              class="hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-110 px-3 py-2 rounded-lg hover:bg-cyan-400/10"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Bio -->
+          <div
+            class="text-gray-300 text-base leading-relaxed mb-4 p-4 bg-slate-700/20 rounded-xl border border-slate-500/20"
+          >
+            <p>
+              I'm a
+              <span class="text-pink-400 font-semibold"
+                >curious and driven tech enthusiast</span
+              >
+              passionate about
+              <span class="text-cyan-400 font-semibold"
+                >solving real-world problems through innovation</span
+              >. I enjoy exploring
+              <span class="text-cyan-400 font-semibold">new technologies</span>,
+              have a growing interest in
+              <span class="text-pink-400 font-semibold"
+                >UI/UX design and poster creation. </span
+              >I love building things that create
+              <span class="text-cyan-400 font-semibold">social impact</span> and
+              am always eager to
+              <span class="text-cyan-400 font-semibold">learn, collaborate</span
+              >, and grow across multiple tech domains.
+            </p>
+          </div>
+
+          <!-- Details -->
+          <div
+            class="text-sm text-gray-400 space-y-3 bg-slate-700/20 p-4 rounded-xl"
+          >
+            <div class="flex items-center gap-3">
+              <span class="text-green-400">📅</span>
+              <span>Date of Birth: 22/08/2005</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-blue-400">📧</span>
+              <span>Email: kadamatharva1234@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      let currentText = "";
+      let isDeleting = false;
+      let currentIndex = 0;
+      let charIndex = 0;
+      const words = ["Developer ", "Tech Enthusiast ", "Designer "];
+      const typingSpeed = 120;
+      const deletingSpeed = 80;
+      const pauseTime = 1500;
+      const typingElement = document.getElementById("typingText");
+      let hasStartedTyping = false;
+
+      function typeWriter() {
+        const currentWord = words[currentIndex];
+
+        if (!isDeleting) {
+          currentText = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+          if (charIndex === currentWord.length) {
+            if (currentIndex === words.length - 1) {
+              setTimeout(scrollToNextSection, pauseTime);
+              return;
+            } else {
+              setTimeout(() => {
+                isDeleting = true;
+                typeWriter();
+              }, pauseTime);
+              return;
+            }
+          }
+        } else {
+          currentText = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            currentIndex++;
+            if (currentIndex >= words.length) currentIndex = 0;
+          }
+        }
+
+        typingElement.textContent = currentText;
+        setTimeout(typeWriter, isDeleting ? deletingSpeed : typingSpeed);
+      }
+
+      function scrollToNextSection() {
+        window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+      }
+
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const profileCard = document.getElementById("profileCard");
+          profileCard.style.opacity = "1";
+          profileCard.style.transform = "translateY(0)";
+        }, 500);
+
+        setTimeout(() => {
+          if (!hasStartedTyping) {
+            hasStartedTyping = true;
+            typeWriter();
+          }
+        }, 1000);
+      });
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.pageYOffset;
+        const profileCard = document.getElementById("profileCard");
+
+        if (scrollTop > window.innerHeight * 0.1) {
+          profileCard.style.opacity = "0";
+          profileCard.style.transform = "scale(0.9) translateY(-20px)";
+        } else {
+          profileCard.style.opacity = "1";
+          profileCard.style.transform = "scale(1) translateY(0)";
+        }
+      });
+
+      let isScrolling = false;
+      window.addEventListener(
+        "wheel",
+        (e) => {
+          if (isScrolling) return;
+          e.preventDefault();
+          isScrolling = true;
+
+          const currentScroll = window.pageYOffset;
+          const windowHeight = window.innerHeight;
+          const currentSection = Math.round(currentScroll / windowHeight);
+          let targetSection = currentSection;
+
+          if (e.deltaY > 0 && currentSection < 1) {
+            targetSection = 1;
+          } else if (e.deltaY < 0 && currentSection > 0) {
+            targetSection = 0;
+          }
+
+          window.scrollTo({
+            top: targetSection * windowHeight,
+            behavior: "smooth",
+          });
+
+          setTimeout(() => {
+            isScrolling = false;
+          }, 800);
+        },
+        { passive: false }
+      );
+    </script>
+  </body>
+</html>
