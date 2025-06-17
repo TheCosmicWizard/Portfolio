@@ -1,1275 +1,924 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skills & Learning - Atharv Kadam</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ["Oswald", "sans-serif"],
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills & Learning - Atharv Kadam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Oswald", "sans-serif"],
+          },
+          colors: {
+            emerald: {
+              500: "#10b981",
             },
-            colors: {
-              emerald: {
-                500: "#10b981",
-              },
-              violet: {
-                500: "#8b5cf6",
-              },
+            violet: {
+              500: "#8b5cf6",
             },
           },
         },
-      };
-    </script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+      },
+    };
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
 
-      @keyframes glow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-        50% {
-          box-shadow: 0 0 30px rgba(16, 185, 129, 0.6),
-            0 0 40px rgba(16, 185, 129, 0.3);
-        }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
       }
 
-      @keyframes slideIn {
-        from {
-          transform: translateX(-100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
+      50% {
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.6),
+          0 0 40px rgba(16, 185, 129, 0.3);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
       }
 
-      @keyframes fadeInUp {
-        from {
-          transform: translateY(30px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
       }
 
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
+      to {
+        transform: translateY(0);
+        opacity: 1;
       }
+    }
 
-      @keyframes shimmer {
-        0% {
-          left: -100%;
-        }
-        100% {
-          left: 100%;
-        }
-      }
-
-      @keyframes skillBar {
-        from {
-          width: 0%;
-        }
-        to {
-          width: var(--skill-width);
-        }
-      }
-
-      .float-animation {
-        animation: float 3s ease-in-out infinite;
-      }
-
-      .glow-effect {
-        animation: glow 2s ease-in-out infinite;
-      }
-
-      .slide-in {
-        animation: slideIn 0.6s ease-out forwards;
-      }
-
-      .fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-      }
-
-      .pulse-animation {
-        animation: pulse 2s ease-in-out infinite;
-      }
-
-      body {
-        font-family: "Times New Roman", serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      }
-
-      .gradient-text {
-        background: linear-gradient(45deg, #22d3ee, #8b5cf6, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: gradient-shift 3s ease-in-out infinite;
-      }
-
-      @keyframes gradient-shift {
-        0%,
-        100% {
-          filter: hue-rotate(0deg);
-        }
-        50% {
-          filter: hue-rotate(90deg);
-        }
-      }
-
-      .card-hover:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-      }
-
-      .menu-overlay {
-        backdrop-filter: blur(10px);
-        background: rgba(15, 23, 42, 0.8);
-      }
-
-      .skill-card {
-        background: linear-gradient(
-          135deg,
-          rgba(30, 41, 59, 0.9) 0%,
-          rgba(51, 65, 85, 0.9) 100%
-        );
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        backdrop-filter: blur(20px);
-      }
-
-      .certificate-card {
-        background: linear-gradient(
-          135deg,
-          rgba(30, 41, 59, 0.95) 0%,
-          rgba(51, 65, 85, 0.95) 100%
-        );
-        border: 1px solid rgba(148, 163, 184, 0.3);
-        backdrop-filter: blur(25px);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .certificate-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
+    @keyframes shimmer {
+      0% {
         left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .glow-effect {
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    .slide-in {
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    body {
+      font-family: "Times New Roman", serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #22d3ee, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 3s ease-in-out infinite;
+    }
+
+    @keyframes gradient-shift {
+
+      0%,
+      100% {
+        filter: hue-rotate(0deg);
+      }
+
+      50% {
+        filter: hue-rotate(90deg);
+      }
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-overlay {
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .skill-card {
+      background: linear-gradient(135deg,
+          rgba(30, 41, 59, 0.9) 0%,
+          rgba(51, 65, 85, 0.9) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(20px);
+    }
+
+    .certificate-card {
+      background: linear-gradient(135deg,
+          rgba(30, 41, 59, 0.95) 0%,
+          rgba(51, 65, 85, 0.95) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      backdrop-filter: blur(25px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certificate-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
           transparent,
           rgba(255, 255, 255, 0.1),
-          transparent
-        );
-        animation: shimmer 3s infinite;
-      }
+          transparent);
+      animation: shimmer 3s infinite;
+    }
 
-      .progress-bar {
-        background: linear-gradient(90deg, #10b981, #22d3ee);
-        border-radius: 10px;
-        height: 8px;
-        position: relative;
-        overflow: hidden;
-        animation: skillBar 2s ease-out forwards;
-      }
-
-      .progress-bar::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.4),
-          transparent
-        );
-        animation: shimmer 2s infinite;
-      }
-
-      .skill-icon {
-        background: linear-gradient(
-          135deg,
+    .skill-icon {
+      background: linear-gradient(135deg,
           var(--icon-color-1),
-          var(--icon-color-2)
-        );
-        border-radius: 16px;
-        transition: all 0.3s ease;
-      }
+          var(--icon-color-2));
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
 
-      .skill-icon:hover {
-        transform: rotate(10deg) scale(1.1);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      }
+    .skill-icon:hover {
+      transform: rotate(10deg) scale(1.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
 
-      .certificate-modal {
-        backdrop-filter: blur(20px);
-        background: rgba(15, 23, 42, 0.95);
-      }
+    .certificate-modal {
+      backdrop-filter: blur(20px);
+      background: rgba(15, 23, 42, 0.95);
+    }
 
-      .certificate-image {
-        transition: transform 0.3s ease;
-        border-radius: 12px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      }
+    .certificate-image {
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
 
-      .certificate-image:hover {
-        transform: scale(1.02);
-      }
-    </style>
-  </head>
-  <body class="overflow-x-hidden min-h-screen">
-    <!-- Navigation Menu Button -->
-    <div class="fixed top-6 right-6 z-50">
-      <button
-        id="menuToggle"
-        class="w-12 h-12 bg-slate-800/90 backdrop-blur-lg rounded-full border border-slate-600/50 flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:bg-slate-700/90 glow-effect"
-      >
-        <div
-          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
-          id="line1"
-        ></div>
-        <div
-          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
-          id="line2"
-        ></div>
-        <div
-          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
-          id="line3"
-        ></div>
-      </button>
+    .certificate-image:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden min-h-screen">
+  <!-- Navigation Menu Button -->
+  <div class="fixed top-6 right-6 z-50">
+    <button id="menuToggle"
+      class="w-12 h-12 bg-slate-800/90 backdrop-blur-lg rounded-full border border-slate-600/50 flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:bg-slate-700/90 glow-effect">
+      <div class="w-6 h-0.5 bg-emerald-400 transition-all duration-300" id="line1"></div>
+      <div class="w-6 h-0.5 bg-emerald-400 transition-all duration-300" id="line2"></div>
+      <div class="w-6 h-0.5 bg-emerald-400 transition-all duration-300" id="line3"></div>
+    </button>
+  </div>
+
+  <!-- Sliding Menu -->
+  <div id="slideMenu"
+    class="fixed top-0 right-0 h-full w-80 bg-slate-800/95 backdrop-blur-xl border-l border-slate-600/50 transform translate-x-full transition-transform duration-500 z-40">
+    <div class="p-8 h-full flex flex-col">
+      <h3 class="text-2xl font-display gradient-text mb-8 mt-16">
+        Navigation
+      </h3>
+      <nav class="flex flex-col gap-4">
+        <a href="index.html"
+          class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30">🏠
+          Home</a>
+        <a href="education.html"
+          class="text-gray-300 hover:text-yellow-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-yellow-400/10 border border-transparent hover:border-yellow-400/30">🎓
+          Education</a>
+        <a href="skills.html"
+          class="text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg">🛠️
+          Skills & Learning</a>
+        <a href="experience.html"
+          class="text-gray-300 hover:text-violet-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-violet-400/10 border border-transparent hover:border-violet-400/30">💼
+          Experience</a>
+        <a href="projects.html"
+          class="text-gray-300 hover:text-pink-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-pink-400/10 border border-transparent hover:border-pink-400/30">🚀
+          Projects</a>
+        <a href="contact.html"
+          class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30">📞
+          Contact</a>
+      </nav>
     </div>
+  </div>
 
-    <!-- Sliding Menu -->
-    <div
-      id="slideMenu"
-      class="fixed top-0 right-0 h-full w-80 bg-slate-800/95 backdrop-blur-xl border-l border-slate-600/50 transform translate-x-full transition-transform duration-500 z-40"
-    >
-      <div class="p-8 h-full flex flex-col">
-        <h3 class="text-2xl font-display gradient-text mb-8 mt-16">
-          Navigation
-        </h3>
-        <nav class="flex flex-col gap-4">
-          <a
-            href="index.html"
-            class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30"
-            >🏠 Home</a
-          >
-          <a
-            href="education.html"
-            class="text-gray-300 hover:text-yellow-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-yellow-400/10 border border-transparent hover:border-yellow-400/30"
-            >🎓 Education</a
-          >
-          <a
-            href="skills.html"
-            class="text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg"
-            >🛠️ Skills & Learning</a
-          >
-          <a
-            href="experience.html"
-            class="text-gray-300 hover:text-violet-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-violet-400/10 border border-transparent hover:border-violet-400/30"
-            >💼 Experience</a
-          >
-          <a
-            href="projects.html"
-            class="text-gray-300 hover:text-pink-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-pink-400/10 border border-transparent hover:border-pink-400/30"
-            >🚀 Projects</a
-          >
-          <a
-            href="contact.html"
-            class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30"
-            >📞 Contact</a
-          >
-        </nav>
+  <!-- Menu Overlay -->
+  <div id="menuOverlay"
+    class="fixed inset-0 menu-overlay opacity-0 pointer-events-none transition-opacity duration-500 z-30"></div>
+
+  <!-- Background particles -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-400 rounded-full opacity-30 float-animation"></div>
+    <div class="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 float-animation"
+      style="animation-delay: 1s"></div>
+    <div class="absolute top-1/2 right-1/3 w-3 h-3 bg-violet-500 rounded-full opacity-20 float-animation"
+      style="animation-delay: 2s"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-pink-400 rounded-full opacity-25 float-animation"
+      style="animation-delay: 1.5s"></div>
+    <div class="absolute top-1/6 right-1/2 w-2 h-2 bg-yellow-400 rounded-full opacity-35 float-animation"
+      style="animation-delay: 0.5s"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="min-h-screen py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16 slide-in">
+        <h1 class="text-5xl md:text-7xl font-display gradient-text mb-6">
+          Skills & Learning
+        </h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          My technical expertise and continuous learning journey
+        </p>
       </div>
-    </div>
 
-    <!-- Menu Overlay -->
-    <div
-      id="menuOverlay"
-      class="fixed inset-0 menu-overlay opacity-0 pointer-events-none transition-opacity duration-500 z-30"
-    ></div>
+      <!-- Technical Skills Section -->
+      <div class="mb-20">
+        <h2 class="text-4xl font-display gradient-text text-center mb-12 fade-in-up" style="animation-delay: 0.2s">
+          Technical Skills
+        </h2>
 
-    <!-- Background particles -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-      <div
-        class="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-400 rounded-full opacity-30 float-animation"
-      ></div>
-      <div
-        class="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 float-animation"
-        style="animation-delay: 1s"
-      ></div>
-      <div
-        class="absolute top-1/2 right-1/3 w-3 h-3 bg-violet-500 rounded-full opacity-20 float-animation"
-        style="animation-delay: 2s"
-      ></div>
-      <div
-        class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-pink-400 rounded-full opacity-25 float-animation"
-        style="animation-delay: 1.5s"
-      ></div>
-      <div
-        class="absolute top-1/6 right-1/2 w-2 h-2 bg-yellow-400 rounded-full opacity-35 float-animation"
-        style="animation-delay: 0.5s"
-      ></div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="min-h-screen py-20 px-4">
-      <div class="max-w-7xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-16 slide-in">
-          <h1 class="text-5xl md:text-7xl font-display gradient-text mb-6">
-            Skills & Learning
-          </h1>
-          <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-            My technical expertise and continuous learning journey
-          </p>
-        </div>
-
-        <!-- Technical Skills Section -->
-        <div class="mb-20">
-          <h2
-            class="text-4xl font-display gradient-text text-center mb-12 fade-in-up"
-            style="animation-delay: 0.2s"
-          >
-            Technical Skills
-          </h2>
-
-          <!-- Programming Languages -->
-          <div class="mb-12 fade-in-up" style="animation-delay: 0.4s">
-            <h3 class="text-2xl font-display text-cyan-400 mb-6">
-              Programming Languages
-            </h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-lg"
-                    style="--icon-color-1: #3776ab; --icon-color-2: #ffd43b"
-                  >
-                    Py
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">Python</h4>
-                    <p class="text-gray-400 text-sm">Advanced</p>
-                  </div>
+        <!-- Programming Languages -->
+        <div class="mb-12 fade-in-up" style="animation-delay: 0.4s">
+          <h3 class="text-2xl font-display text-cyan-400 mb-6">
+            Programming Languages
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-lg"
+                  style="--icon-color-1: #3776ab; --icon-color-2: #ffd43b">
+                  Py
                 </div>
-                <div class="mb-2 flex justify-between">
-                  <span class="text-gray-300">Proficiency</span>
-                  <span class="text-emerald-400 font-semibold">90%</span>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 90%; width: 90%"
-                  ></div>
-                </div>
-              </div>
-
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-lg"
-                    style="--icon-color-1: #f89820; --icon-color-2: #ed8b00"
-                  >
-                    Jv
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">Java</h4>
-                    <p class="text-gray-400 text-sm">Intermediate</p>
-                  </div>
-                </div>
-                <div class="mb-2 flex justify-between">
-                  <span class="text-gray-300">Proficiency</span>
-                  <span class="text-emerald-400 font-semibold">75%</span>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 75%; width: 75%"
-                  ></div>
-                </div>
-              </div>
-
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-lg"
-                    style="--icon-color-1: #00599c; --icon-color-2: #659ad2"
-                  >
-                    C++
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">C++</h4>
-                    <p class="text-gray-400 text-sm">Intermediate</p>
-                  </div>
-                </div>
-                <div class="mb-2 flex justify-between">
-                  <span class="text-gray-300">Proficiency</span>
-                  <span class="text-emerald-400 font-semibold">70%</span>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 70%; width: 70%"
-                  ></div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">Python</h4>
+                  <p class="text-gray-400 text-sm">Data Science, Web Development</p>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Web Development -->
-          <div class="mb-12 fade-in-up" style="animation-delay: 0.6s">
-            <h3 class="text-2xl font-display text-pink-400 mb-6">
-              Web Development
-            </h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
-                    style="--icon-color-1: #e34c26; --icon-color-2: #f06529"
-                  >
-                    HTML
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">HTML5</h4>
-                    <p class="text-gray-400 text-sm">Advanced</p>
-                  </div>
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-lg"
+                  style="--icon-color-1: #f89820; --icon-color-2: #ed8b00">
+                  Jv
                 </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 95%; width: 95%"
-                  ></div>
-                </div>
-              </div>
-
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
-                    style="--icon-color-1: #1572b6; --icon-color-2: #33a9dc"
-                  >
-                    CSS
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">CSS3</h4>
-                    <p class="text-gray-400 text-sm">Advanced</p>
-                  </div>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 90%; width: 90%"
-                  ></div>
-                </div>
-              </div>
-
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
-                    style="--icon-color-1: #f0db4f; --icon-color-2: #323330"
-                  >
-                    JS
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">JavaScript</h4>
-                    <p class="text-gray-400 text-sm">Intermediate</p>
-                  </div>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 80%; width: 80%"
-                  ></div>
-                </div>
-              </div>
-
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
-                    style="--icon-color-1: #61dafb; --icon-color-2: #21232a"
-                  >
-                    React
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">React</h4>
-                    <p class="text-gray-400 text-sm">Learning</p>
-                  </div>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 60%; width: 60%"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tools & Technologies -->
-          <div class="mb-12 fade-in-up" style="animation-delay: 0.8s">
-            <h3 class="text-2xl font-display text-violet-400 mb-6">
-              Tools & Technologies
-            </h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
-                    style="--icon-color-1: #f05032; --icon-color-2: #362d00"
-                  >
-                    Git
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">
-                      Git & GitHub
-                    </h4>
-                    <p class="text-gray-400 text-sm">Advanced</p>
-                  </div>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 85%; width: 85%"
-                  ></div>
-                </div>
-              </div>
-
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
-                    style="--icon-color-1: #007acc; --icon-color-2: #0066b3"
-                  >
-                    VS
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">VS Code</h4>
-                    <p class="text-gray-400 text-sm">Expert</p>
-                  </div>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 95%; width: 95%"
-                  ></div>
-                </div>
-              </div>
-
-              <div
-                class="skill-card rounded-2xl p-6 card-hover transition-all duration-300"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div
-                    class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
-                    style="--icon-color-1: #336791; --icon-color-2: #4b9cd3"
-                  >
-                    DB
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-white">Databases</h4>
-                    <p class="text-gray-400 text-sm">MySQL, MongoDB</p>
-                  </div>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 75%; width: 75%"
-                  ></div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">Java</h4>
+                  <p class="text-gray-400 text-sm">Object-Oriented Programming</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Certificates Section -->
-        <div class="mb-20">
-          <h2
-            class="text-4xl font-display gradient-text text-center mb-12 fade-in-up"
-            style="animation-delay: 1s"
-          >
-            Certificates & Achievements
-          </h2>
+        <!-- Web Development -->
+        <div class="mb-12 fade-in-up" style="animation-delay: 0.6s">
+          <h3 class="text-2xl font-display text-pink-400 mb-6">
+            Web Development
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
+                  style="--icon-color-1: #e34c26; --icon-color-2: #f06529">
+                  HTML
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">HTML5</h4>
+                  <p class="text-gray-400 text-sm">Semantic Markup</p>
+                </div>
+              </div>
+            </div>
 
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Certificate 1 -->
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
+                  style="--icon-color-1: #1572b6; --icon-color-2: #33a9dc">
+                  CSS
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">CSS3</h4>
+                  <p class="text-gray-400 text-sm">Responsive Design</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
+                  style="--icon-color-1: #f0db4f; --icon-color-2: #323330">
+                  JS
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">JavaScript</h4>
+                  <p class="text-gray-400 text-sm">DOM Manipulation</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
+                  style="--icon-color-1: #61dafb; --icon-color-2: #21232a">
+                  React
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">React</h4>
+                  <p class="text-gray-400 text-sm">Component-based</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & Technologies -->
+        <div class="mb-12 fade-in-up" style="animation-delay: 0.8s">
+          <h3 class="text-2xl font-display text-violet-400 mb-6">
+            Tools & Technologies
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
+                  style="--icon-color-1: #f05032; --icon-color-2: #362d00">
+                  Git
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">
+                    Git & GitHub
+                  </h4>
+                  <p class="text-gray-400 text-sm">Version Control</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
+                  style="--icon-color-1: #007acc; --icon-color-2: #0066b3">
+                  VS
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">VS Code</h4>
+                  <p class="text-gray-400 text-sm">Code Editor</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="skill-icon w-12 h-12 flex items-center justify-center text-white font-bold text-sm"
+                  style="--icon-color-1: #336791; --icon-color-2: #4b9cd3">
+                  DB
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">Databases</h4>
+                  <p class="text-gray-400 text-sm">MySQL, MongoDB</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificates Section -->
+      <div class="mb-20">
+        <h2 class="text-4xl font-display gradient-text text-center mb-12 fade-in-up" style="animation-delay: 1s">
+          Certificates & Achievements
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Certificate 1 -->
+          <div class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
+            style="animation-delay: 1.2s" onclick="openModal('cert1')">
+            <div class="relative mb-4">
+              <div
+                class="w-full h-40 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <div class="text-center text-white">
+                  <div class="text-3xl mb-2">🏆</div>
+                  <h4 class="font-bold">Python Programming</h4>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">
+              Python for Everybody
+            </h3>
+            <p class="text-gray-400 text-sm mb-3">
+              University of Michigan - Coursera
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
+              <span class="text-gray-500 text-xs">2023</span>
+            </div>
+          </div>
+
+          <!-- Certificate 2 -->
+          <div class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
+            style="animation-delay: 1.4s" onclick="openModal('cert2')">
+            <div class="relative mb-4">
+              <div
+                class="w-full h-40 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
+                <div class="text-center text-white">
+                  <div class="text-3xl mb-2">💻</div>
+                  <h4 class="font-bold">Web Development</h4>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">
+              HTML, CSS & JavaScript
+            </h3>
+            <p class="text-gray-400 text-sm mb-3">FreeCodeCamp</p>
+            <div class="flex items-center justify-between">
+              <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
+              <span class="text-gray-500 text-xs">2023</span>
+            </div>
+          </div>
+
+          <!-- Certificate 3 -->
+          <div class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
+            style="animation-delay: 1.6s" onclick="openModal('cert3')">
+            <div class="relative mb-4">
+              <div
+                class="w-full h-40 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+                <div class="text-center text-white">
+                  <div class="text-3xl mb-2">☕</div>
+                  <h4 class="font-bold">Java Programming</h4>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">
+              Java Fundamentals
+            </h3>
+            <p class="text-gray-400 text-sm mb-3">Oracle Academy</p>
+            <div class="flex items-center justify-between">
+              <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
+              <span class="text-gray-500 text-xs">2024</span>
+            </div>
+          </div>
+
+          <!-- Certificate 4 -->
+          <div class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
+            style="animation-delay: 1.8s" onclick="openModal('cert4')">
+            <div class="relative mb-4">
+              <div
+                class="w-full h-40 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg flex items-center justify-center">
+                <div class="text-center text-white">
+                  <div class="text-3xl mb-2">🎨</div>
+                  <h4 class="font-bold">UI/UX Design</h4>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">
+              Design Thinking
+            </h3>
+            <p class="text-gray-400 text-sm mb-3">Google UX Design</p>
+            <div class="flex items-center justify-between">
+              <span class="bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-xs">In Progress</span>
+              <span class="text-gray-500 text-xs">2024</span>
+            </div>
+          </div>
+
+          <!-- Certificate 5 -->
+          <div class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
+            style="animation-delay: 2s" onclick="openModal('cert5')">
+            <div class="relative mb-4">
+              <div
+                class="w-full h-40 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center">
+                <div class="text-center text-white">
+                  <div class="text-3xl mb-2">🗄️</div>
+                  <h4 class="font-bold">Database Management</h4>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">
+              Database Fundamentals
+            </h3>
+            <p class="text-gray-400 text-sm mb-3">MongoDB University</p>
+            <div class="flex items-center justify-between">
+              <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
+              <span class="text-gray-500 text-xs">2024</span>
+            </div>
+          </div>
+
+          <!-- Certificate 6 -->
+          <div class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
+            style="animation-delay: 2.2s" onclick="openModal('cert6')">
+            <div class="relative mb-4">
+              <div
+                class="w-full h-40 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                <div class="text-center text-white">
+                  <div class="text-3xl mb-2">🚀</div>
+                  <h4 class="font-bold">Git & GitHub</h4>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">
+              Git Version Control
+            </h3>
+            <p class="text-gray-400 text-sm mb-3">GitHub Learning Lab</p>
+            <div class="flex items-center justify-between">
+              <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
+              <span class="text-gray-500 text-xs">2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning Goals Section -->
+      <div class="mb-4">
+        <h2 class="text-4xl font-display gradient-text text-center mb-12 fade-in-up" style="animation-delay: 2.4s">
+          Currently Learning
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <div class="skill-card rounded-2xl p-8 card-hover transition-all duration-300 fade-in-up"
+          style="animation-delay: 2.6s">
+          <div class="flex items-center gap-4 mb-4">
             <div
-              class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
-              style="animation-delay: 1.2s"
-              onclick="openModal('cert1')"
-            >
-              <div class="relative mb-4">
-                <div
-                  class="w-full h-40 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <div class="text-3xl mb-2">🏆</div>
-                    <h4 class="font-bold">Python Programming</h4>
-                    <p class="text-sm opacity-90">Certificate of Completion</p>
-                  </div>
-                </div>
-              </div>
-              <h3 class="text-lg font-semibold text-white mb-2">
-                Python for Everybody
+              class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center text-white text-2xl">
+              🤖
+            </div>
+            <div>
+              <h3 class="text-2xl font-display text-cyan-400">
+                AI & Machine Learning
               </h3>
-              <p class="text-gray-400 text-sm mb-3">
-                University of Michigan - Coursera
+              <p class="text-gray-400">Exploring AI technologies</p>
+            </div>
+          </div>
+          <div class="space-y-2 text-gray-300">
+            <p>• TensorFlow & PyTorch</p>
+            <p>• Natural Language Processing</p>
+            <p>• Computer Vision</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interests & Hobbies -->
+      <div class="mb-20">
+        <h2 class="text-4xl font-display gradient-text text-center mb-12 fade-in-up" style="animation-delay: 3s">
+          Interests & Creative Skills
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up"
+            style="animation-delay: 3.2s">
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 pulse-animation">
+                🎨
+              </div>
+              <h3 class="text-xl font-display text-yellow-400 mb-3">UI/UX Design</h3>
+              <p class="text-gray-300 text-sm">Creating intuitive and beautiful user interfaces with modern design
+                principles
               </p>
-              <div class="flex items-center justify-between">
-                <span
-                  class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs"
-                  >Completed</span
-                >
-                <span class="text-gray-500 text-xs">2023</span>
-              </div>
             </div>
+          </div>
 
-            <!-- Certificate 2 -->
-            <div
-              class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
-              style="animation-delay: 1.4s"
-              onclick="openModal('cert2')"
-            >
-              <div class="relative mb-4">
-                <div
-                  class="w-full h-40 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <div class="text-3xl mb-2">💻</div>
-                    <h4 class="font-bold">Web Development</h4>
-                    <p class="text-sm opacity-90">Frontend Basics</p>
-                  </div>
-                </div>
+          <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up"
+            style="animation-delay: 3.4s">
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 pulse-animation">
+                📊
               </div>
-              <h3 class="text-lg font-semibold text-white mb-2">
-                HTML, CSS & JavaScript
+              <h3 class="text-xl font-display text-emerald-400 mb-3">
+                Poster Design
               </h3>
-              <p class="text-gray-400 text-sm mb-3">FreeCodeCamp</p>
-              <div class="flex items-center justify-between">
-                <span
-                  class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs"
-                  >Completed</span
-                >
-                <span class="text-gray-500 text-xs">2023</span>
-              </div>
+              <p class="text-gray-300 text-sm">
+                Designing engaging posters and graphics for events and social causes
+              </p>
             </div>
-
-            <!-- Certificate 3 -->
-            <div
-              class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
-              style="animation-delay: 1.6s"
-              onclick="openModal('cert3')"
-            >
-              <div class="relative mb-4">
-                <div
-                  class="w-full h-40 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <div class="text-3xl mb-2">☕</div>
-                    <h4 class="font-bold">Java Programming</h4>
-                    <p class="text-sm opacity-90">
-                      Object-Oriented Programming
-                    </p>
-                  </div>
-                </div>
+          </div>
+          <div class="skill-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up"
+            style="animation-delay: 3.6s">
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 pulse-animation">
+                🧩
               </div>
-              <h3 class="text-lg font-semibold text-white mb-2">
-                Java Fundamentals
+              <h3 class="text-xl font-display text-violet-400 mb-3">
+                Problem Solving
               </h3>
-              <p class="text-gray-400 text-sm mb-3">Oracle Academy</p>
-              <div class="flex items-center justify-between">
-                <span
-                  class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs"
-                  >Completed</span
-                >
-                <span class="text-gray-500 text-xs">2024</span>
-              </div>
-            </div>
-
-            <!-- Certificate 4 -->
-            <div
-              class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
-              style="animation-delay: 1.8s"
-              onclick="openModal('cert4')"
-            >
-              <div class="relative mb-4">
-                <div
-                  class="w-full h-40 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <div class="text-3xl mb-2">🎨</div>
-                    <h4 class="font-bold">UI/UX Design</h4>
-                    <p class="text-sm opacity-90">Design Principles</p>
-                  </div>
-                </div>
-              </div>
-              <h3 class="text-lg font-semibold text-white mb-2">
-                Design Thinking
-              </h3>
-              <p class="text-gray-400 text-sm mb-3">Google UX Design</p>
-              <div class="flex items-center justify-between">
-                <span
-                  class="bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-xs"
-                  >In Progress</span
-                >
-                <span class="text-gray-500 text-xs">2024</span>
-              </div>
-            </div>
-
-            <!-- Certificate 5 -->
-            <div
-              class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
-              style="animation-delay: 2s"
-              onclick="openModal('cert5')"
-            >
-              <div class="relative mb-4">
-                <div
-                  class="w-full h-40 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <div class="text-3xl mb-2">🗄️</div>
-                    <h4 class="font-bold">Database Management</h4>
-                    <p class="text-sm opacity-90">SQL & NoSQL</p>
-                  </div>
-                </div>
-              </div>
-              <h3 class="text-lg font-semibold text-white mb-2">
-                Database Fundamentals
-              </h3>
-              <p class="text-gray-400 text-sm mb-3">MongoDB University</p>
-              <div class="flex items-center justify-between">
-                <span
-                  class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs"
-                  >Completed</span
-                >
-                <span class="text-gray-500 text-xs">2024</span>
-              </div>
-            </div>
-
-            <!-- Certificate 6 -->
-            <div
-              class="certificate-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up cursor-pointer"
-              style="animation-delay: 2.2s"
-              onclick="openModal('cert6')"
-            >
-              <div class="relative mb-4">
-                <div
-                  class="w-full h-40 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center"
-                >
-                  <div class="text-center text-white">
-                    <div class="text-3xl mb-2">🚀</div>
-                    <h4 class="font-bold">Git & GitHub</h4>
-                    <p class="text-sm opacity-90">Version Control</p>
-                  </div>
-                </div>
-              </div>
-              <h3 class="text-lg font-semibold text-white mb-2">
-                Git Version Control
-              </h3>
-              <p class="text-gray-400 text-sm mb-3">GitHub Learning Lab</p>
-              <div class="flex items-center justify-between">
-                <span
-                  class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs"
-                  >Completed</span
-                >
-                <span class="text-gray-500 text-xs">2023</span>
-              </div>
+              <p class="text-gray-300 text-sm">
+                Passionate about algorithmic challenges and competitive
+                programming
+              </p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Learning Goals Section -->
-        <div class="mb-20">
-          <h2
-            class="text-4xl font-display gradient-text text-center mb-12 fade-in-up"
-            style="animation-delay: 2.4s"
-          >
-            Current Learning Goals
-          </h2>
+      <!-- Certificate Modal -->
+      <div id="certificateModal"
+        class="fixed inset-0 certificate-modal opacity-0 pointer-events-none transition-opacity duration-500 z-50 flex items-center justify-center p-4">
+        <div
+          class="max-w-4xl w-full bg-slate-800/95 backdrop-blur-xl rounded-3xl border border-slate-600/50 p-8 transform scale-95 transition-transform duration-500"
+          id="modalContent">
+          <div class="flex justify-between items-start mb-6">
+            <h3 class="text-2xl font-display gradient-text" id="modalTitle">
+              Certificate Details
+            </h3>
+            <button onclick="closeModal()"
+              class="w-10 h-10 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-full flex items-center justify-center transition-colors duration-300">
+              ✕
+            </button>
+          </div>
 
           <div class="grid md:grid-cols-2 gap-8">
-            <div
-              class="skill-card rounded-2xl p-8 card-hover transition-all duration-300 fade-in-up"
-              style="animation-delay: 2.6s"
-            >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center text-white text-2xl pulse-animation"
-                >
-                  🤖
-                </div>
-                <div>
-                  <h3 class="text-2xl font-display text-cyan-400">
-                    AI & Machine Learning
-                  </h3>
-                  <p class="text-gray-400">Exploring AI technologies</p>
-                </div>
-              </div>
-              <div class="space-y-3 text-gray-300">
-                <p>• TensorFlow & PyTorch fundamentals</p>
-                <p>• Natural Language Processing</p>
-                <p>• Computer Vision applications</p>
-                <p>• Deep Learning architectures</p>
-              </div>
-              <div class="mt-6">
-                <div class="flex justify-between items-center mb-2">
-                  <span class="text-sm text-gray-400">Progress</span>
-                  <span class="text-cyan-400 font-semibold">35%</span>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 35%; width: 35%"
-                  ></div>
+            <div>
+              <div
+                class="certificate-image w-full h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-4"
+                id="modalImage">
+                <div class="text-center text-white">
+                  <div class="text-6xl mb-4">🏆</div>
+                  <h4 class="text-2xl font-bold">Certificate</h4>
+                  <p class="text-lg opacity-90">Click to view full size</p>
                 </div>
               </div>
             </div>
 
-            <div
-              class="skill-card rounded-2xl p-8 card-hover transition-all duration-300 fade-in-up"
-              style="animation-delay: 2.8s"
-            >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-400 rounded-2xl flex items-center justify-center text-white text-2xl pulse-animation"
-                >
-                  ☁️
-                </div>
-                <div>
-                  <h3 class="text-2xl font-display text-pink-400">
-                    Cloud Computing
-                  </h3>
-                  <p class="text-gray-400">Modern deployment strategies</p>
-                </div>
-              </div>
-              <div class="space-y-3 text-gray-300">
-                <p>• AWS fundamentals & services</p>
-                <p>• Docker containerization</p>
-                <p>• Kubernetes orchestration</p>
-                <p>• CI/CD pipeline development</p>
-              </div>
-              <div class="mt-6">
-                <div class="flex justify-between items-center mb-2">
-                  <span class="text-sm text-gray-400">Progress</span>
-                  <span class="text-pink-400 font-semibold">25%</span>
-                </div>
-                <div class="w-full bg-slate-600/50 rounded-full h-2">
-                  <div
-                    class="progress-bar"
-                    style="--skill-width: 25%; width: 25%"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interests & Hobbies -->
-        <div class="mb-20">
-          <h2
-            class="text-4xl font-display gradient-text text-center mb-12 fade-in-up"
-            style="animation-delay: 3s"
-          >
-            Interests & Creative Skills
-          </h2>
-
-          <div class="grid md:grid-cols-3 gap-8">
-            <div
-              class="skill-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up"
-              style="animation-delay: 3.2s"
-            >
-              <div class="text-center">
-                <div
-                  class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 pulse-animation"
-                >
-                  🎨
-                </div>
-                <h3 class="text-xl font-display text-yellow-400 mb-3">
-                  UI/UX Design
-                </h3>
-                <p class="text-gray-300 text-sm">
-                  Creating intuitive and beautiful user interfaces with modern
-                  design principles
+            <div class="space-y-4">
+              <div>
+                <h4 class="text-lg font-semibold text-cyan-400 mb-2">
+                  Course Details
+                </h4>
+                <p class="text-gray-300" id="modalDescription">
+                  Comprehensive course covering fundamental concepts and practical
+                  applications.
                 </p>
               </div>
-            </div>
 
-            <div
-              class="skill-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up"
-              style="animation-delay: 3.4s"
-            >
-              <div class="text-center">
-                <div
-                  class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 pulse-animation"
-                >
-                  📊
-                </div>
-                <h3 class="text-xl font-display text-emerald-400 mb-3">
-                  Poster Design
-                </h3>
-                <p class="text-gray-300 text-sm">
-                  Designing engaging posters and graphics for events and social
-                  causes
-                </p>
+              <div>
+                <h4 class="text-lg font-semibold text-emerald-400 mb-2">
+                  Skills Acquired
+                </h4>
+                <ul class="text-gray-300 space-y-1" id="modalSkills">
+                  <li>• Core programming concepts</li>
+                  <li>• Problem-solving techniques</li>
+                  <li>• Best practices and methodologies</li>
+                </ul>
               </div>
-            </div>
 
-            <div
-              class="skill-card rounded-2xl p-6 card-hover transition-all duration-300 fade-in-up"
-              style="animation-delay: 3.6s"
-            >
-              <div class="text-center">
-                <div
-                  class="w-20 h-20 bg-gradient-to-br from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 pulse-animation"
-                >
-                  🧩
+              <div>
+                <h4 class="text-lg font-semibold text-pink-400 mb-2">
+                  Completion Details
+                </h4>
+                <div class="flex gap-4">
+                  <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-sm">Completed</span>
+                  <span class="bg-slate-700/50 text-gray-300 px-3 py-1 rounded-full text-sm" id="modalDate">2023</span>
                 </div>
-                <h3 class="text-xl font-display text-violet-400 mb-3">
-                  Problem Solving
-                </h3>
-                <p class="text-gray-300 text-sm">
-                  Passionate about algorithmic challenges and competitive
-                  programming
-                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Certificate Modal -->
-    <div
-      id="certificateModal"
-      class="fixed inset-0 certificate-modal opacity-0 pointer-events-none transition-opacity duration-500 z-50 flex items-center justify-center p-4"
-    >
-      <div
-        class="max-w-4xl w-full bg-slate-800/95 backdrop-blur-xl rounded-3xl border border-slate-600/50 p-8 transform scale-95 transition-transform duration-500"
-        id="modalContent"
-      >
-        <div class="flex justify-between items-start mb-6">
-          <h3 class="text-2xl font-display gradient-text" id="modalTitle">
-            Certificate Details
-          </h3>
-          <button
-            onclick="closeModal()"
-            class="w-10 h-10 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-full flex items-center justify-center transition-colors duration-300"
-          >
-            ✕
-          </button>
-        </div>
+      <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const slideMenu = document.getElementById("slideMenu");
+        const menuOverlay = document.getElementById("menuOverlay");
+        const line1 = document.getElementById("line1");
+        const line2 = document.getElementById("line2");
+        const line3 = document.getElementById("line3");
+        let isMenuOpen = false;
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div
-              class="certificate-image w-full h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-4"
-              id="modalImage"
-            >
-              <div class="text-center text-white">
-                <div class="text-6xl mb-4">🏆</div>
-                <h4 class="text-2xl font-bold">Certificate</h4>
-                <p class="text-lg opacity-90">Click to view full size</p>
-              </div>
-            </div>
-          </div>
+        function toggleMenu() {
+          isMenuOpen = !isMenuOpen;
 
-          <div class="space-y-4">
-            <div>
-              <h4 class="text-lg font-semibold text-cyan-400 mb-2">
-                Course Details
-              </h4>
-              <p class="text-gray-300" id="modalDescription">
-                Comprehensive course covering fundamental concepts and practical
-                applications.
-              </p>
-            </div>
+          if (isMenuOpen) {
+            slideMenu.style.transform = "translateX(0)";
+            menuOverlay.style.opacity = "1";
+            menuOverlay.style.pointerEvents = "auto";
 
-            <div>
-              <h4 class="text-lg font-semibold text-emerald-400 mb-2">
-                Skills Acquired
-              </h4>
-              <ul class="text-gray-300 space-y-1" id="modalSkills">
-                <li>• Core programming concepts</li>
-                <li>• Problem-solving techniques</li>
-                <li>• Best practices and methodologies</li>
-              </ul>
-            </div>
+            line1.style.transform = "rotate(45deg) translate(5px, 5px)";
+            line2.style.opacity = "0";
+            line3.style.transform = "rotate(-45deg) translate(7px, -6px)";
+          } else {
+            slideMenu.style.transform = "translateX(100%)";
+            menuOverlay.style.opacity = "0";
+            menuOverlay.style.pointerEvents = "none";
 
-            <div>
-              <h4 class="text-lg font-semibold text-pink-400 mb-2">
-                Completion Details
-              </h4>
-              <div class="flex gap-4">
-                <span
-                  class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-sm"
-                  >Completed</span
-                >
-                <span
-                  class="bg-slate-700/50 text-gray-300 px-3 py-1 rounded-full text-sm"
-                  id="modalDate"
-                  >2023</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      const menuToggle = document.getElementById("menuToggle");
-      const slideMenu = document.getElementById("slideMenu");
-      const menuOverlay = document.getElementById("menuOverlay");
-      const line1 = document.getElementById("line1");
-      const line2 = document.getElementById("line2");
-      const line3 = document.getElementById("line3");
-      let isMenuOpen = false;
-
-      function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-
-        if (isMenuOpen) {
-          slideMenu.style.transform = "translateX(0)";
-          menuOverlay.style.opacity = "1";
-          menuOverlay.style.pointerEvents = "auto";
-
-          line1.style.transform = "rotate(45deg) translate(5px, 5px)";
-          line2.style.opacity = "0";
-          line3.style.transform = "rotate(-45deg) translate(7px, -6px)";
-        } else {
-          slideMenu.style.transform = "translateX(100%)";
-          menuOverlay.style.opacity = "0";
-          menuOverlay.style.pointerEvents = "none";
-
-          line1.style.transform = "rotate(0) translate(0, 0)";
-          line2.style.opacity = "1";
-          line3.style.transform = "rotate(0) translate(0, 0)";
+            line1.style.transform = "rotate(0) translate(0, 0)";
+            line2.style.opacity = "1";
+            line3.style.transform = "rotate(0) translate(0, 0)";
+          }
         }
-      }
 
-      menuToggle.addEventListener("click", toggleMenu);
-      menuOverlay.addEventListener("click", toggleMenu);
+        menuToggle.addEventListener("click", toggleMenu);
+        menuOverlay.addEventListener("click", toggleMenu);
 
-      // Certificate Modal Functions
-      const certificateData = {
-        cert1: {
-          title: "Python for Everybody Specialization",
-          description:
-            "Comprehensive Python programming course covering data structures, web scraping, databases, and data visualization. Learned to write programs that collect, clean, analyze, and visualize data.",
-          skills: [
-            "• Python syntax and semantics",
-            "• Data structures and algorithms",
-            "• Web scraping with BeautifulSoup",
-            "• Database operations with SQLite",
-            "• Data visualization with matplotlib",
-          ],
-          date: "2023",
-          gradient: "from-blue-500 to-purple-600",
-          icon: "🏆",
-        },
-        cert2: {
-          title: "Responsive Web Design",
-          description:
-            "Complete frontend development course focusing on modern web technologies. Built responsive websites using HTML5, CSS3, and JavaScript with emphasis on mobile-first design.",
-          skills: [
-            "• Semantic HTML5 markup",
-            "• Advanced CSS3 and Flexbox",
-            "• Responsive design principles",
-            "• JavaScript DOM manipulation",
-            "• Cross-browser compatibility",
-          ],
-          date: "2023",
-          gradient: "from-green-500 to-teal-600",
-          icon: "💻",
-        },
-        cert3: {
-          title: "Java Programming Fundamentals",
-          description:
-            "Object-oriented programming course covering Java fundamentals, data structures, and software design patterns. Focus on building scalable and maintainable applications.",
-          skills: [
-            "• Object-oriented programming",
-            "• Java collections framework",
-            "• Exception handling",
-            "• File I/O operations",
-            "• Design patterns implementation",
-          ],
-          date: "2024",
-          gradient: "from-orange-500 to-red-600",
-          icon: "☕",
-        },
-        cert4: {
-          title: "Google UX Design Professional",
-          description:
-            "Comprehensive UX design program covering user research, wireframing, prototyping, and usability testing. Currently learning industry-standard design tools and methodologies.",
-          skills: [
-            "• User research and personas",
-            "• Wireframing and prototyping",
-            "• Design thinking process",
-            "• Usability testing methods",
-            "• Figma and design tools",
-          ],
-          date: "2024 (In Progress)",
-          gradient: "from-pink-500 to-rose-600",
-          icon: "🎨",
-        },
-        cert5: {
-          title: "MongoDB Database Fundamentals",
-          description:
-            "NoSQL database course covering MongoDB operations, data modeling, and performance optimization. Learned to design and implement scalable database solutions.",
-          skills: [
-            "• MongoDB CRUD operations",
-            "• Data modeling best practices",
-            "• Aggregation framework",
-            "• Indexing and performance",
-            "• Database security principles",
-          ],
-          date: "2024",
-          gradient: "from-indigo-500 to-blue-600",
-          icon: "🗄️",
-        },
-        cert6: {
-          title: "Git and GitHub Mastery",
-          description:
-            "Version control system course covering Git fundamentals, branching strategies, and collaborative development workflows. Essential skills for modern software development.",
-          skills: [
-            "• Git version control basics",
-            "• Branching and merging",
-            "• Collaborative workflows",
-            "• GitHub project management",
-            "• Open source contribution",
-          ],
-          date: "2023",
-          gradient: "from-cyan-500 to-blue-600",
-          icon: "🚀",
-        },
-      };
+        // Certificate Modal Functions
+        const certificateData = {
+          cert1: {
+            title: "Python for Everybody Specialization",
+            description:
+              "Comprehensive Python programming course covering data structures, web scraping, databases, and data visualization. Learned to write programs that collect, clean, analyze, and visualize data.",
+            skills: [
+              "• Python syntax and semantics",
+              "• Data structures and algorithms",
+              "• Web scraping with BeautifulSoup",
+              "• Database operations with SQLite",
+              "• Data visualization with matplotlib",
+            ],
+            date: "2023",
+            gradient: "from-blue-500 to-purple-600",
+            icon: "🏆",
+          },
+          cert2: {
+            title: "Responsive Web Design",
+            description:
+              "Complete frontend development course focusing on modern web technologies. Built responsive websites using HTML5, CSS3, and JavaScript with emphasis on mobile-first design.",
+            skills: [
+              "• Semantic HTML5 markup",
+              "• Advanced CSS3 and Flexbox",
+              "• Responsive design principles",
+              "• JavaScript DOM manipulation",
+              "• Cross-browser compatibility",
+            ],
+            date: "2023",
+            gradient: "from-green-500 to-teal-600",
+            icon: "💻",
+          },
+          cert3: {
+            title: "Java Programming Fundamentals",
+            description:
+              "Object-oriented programming course covering Java fundamentals, data structures, and software design patterns. Focus on building scalable and maintainable applications.",
+            skills: [
+              "• Object-oriented programming",
+              "• Java collections framework",
+              "• Exception handling",
+              "• File I/O operations",
+              "• Design patterns implementation",
+            ],
+            date: "2024",
+            gradient: "from-orange-500 to-red-600",
+            icon: "☕",
+          },
+          cert4: {
+            title: "Google UX Design Professional",
+            description:
+              "Comprehensive UX design program covering user research, wireframing, prototyping, and usability testing. Currently learning industry-standard design tools and methodologies.",
+            skills: [
+              "• User research and personas",
+              "• Wireframing and prototyping",
+              "• Design thinking process",
+              "• Usability testing methods",
+              "• Figma and design tools",
+            ],
+            date: "2024 (In Progress)",
+            gradient: "from-pink-500 to-rose-600",
+            icon: "🎨",
+          },
+          cert5: {
+            title: "MongoDB Database Fundamentals",
+            description:
+              "NoSQL database course covering MongoDB operations, data modeling, and performance optimization. Learned to design and implement scalable database solutions.",
+            skills: [
+              "• MongoDB CRUD operations",
+              "• Data modeling best practices",
+              "• Aggregation framework",
+              "• Indexing and performance",
+              "• Database security principles",
+            ],
+            date: "2024",
+            gradient: "from-indigo-500 to-blue-600",
+            icon: "🗄️",
+          },
+          cert6: {
+            title: "Git and GitHub Mastery",
+            description:
+              "Version control system course covering Git fundamentals, branching strategies, and collaborative development workflows. Essential skills for modern software development.",
+            skills: [
+              "• Git version control basics",
+              "• Branching and merging",
+              "• Collaborative workflows",
+              "• GitHub project management",
+              "• Open source contribution",
+            ],
+            date: "2023",
+            gradient: "from-cyan-500 to-blue-600",
+            icon: "🚀",
+          },
+        };
 
-      function openModal(certId) {
-        const modal = document.getElementById("certificateModal");
-        const modalContent = document.getElementById("modalContent");
-        const cert = certificateData[certId];
+        function openModal(certId) {
+          const modal = document.getElementById("certificateModal");
+          const modalContent = document.getElementById("modalContent");
+          const cert = certificateData[certId];
 
-        if (cert) {
-          document.getElementById("modalTitle").textContent = cert.title;
-          document.getElementById("modalDescription").textContent =
-            cert.description;
-          document.getElementById("modalDate").textContent = cert.date;
+          if (cert) {
+            document.getElementById("modalTitle").textContent = cert.title;
+            document.getElementById("modalDescription").textContent =
+              cert.description;
+            document.getElementById("modalDate").textContent = cert.date;
 
-          const skillsList = document.getElementById("modalSkills");
-          skillsList.innerHTML = cert.skills
-            .map((skill) => `<li>${skill}</li>`)
-            .join("");
+            const skillsList = document.getElementById("modalSkills");
+            skillsList.innerHTML = cert.skills
+              .map((skill) => `<li>${skill}</li>`)
+              .join("");
 
-          const modalImage = document.getElementById("modalImage");
-          modalImage.className = `certificate-image w-full h-64 bg-gradient-to-br ${cert.gradient} rounded-lg flex items-center justify-center mb-4`;
-          modalImage.innerHTML = `
+            const modalImage = document.getElementById("modalImage");
+            modalImage.className = `certificate-image w-full h-64 bg-gradient-to-br ${cert.gradient} rounded-lg flex items-center justify-center mb-4`;
+            modalImage.innerHTML = `
             <div class="text-center text-white">
               <div class="text-6xl mb-4">${cert.icon}</div>
               <h4 class="text-2xl font-bold">${cert.title}</h4>
               <p class="text-lg opacity-90">Certificate of Completion</p>
             </div>
           `;
+          }
+
+          modal.style.opacity = "1";
+          modal.style.pointerEvents = "auto";
+          modalContent.style.transform = "scale(1)";
         }
 
-        modal.style.opacity = "1";
-        modal.style.pointerEvents = "auto";
-        modalContent.style.transform = "scale(1)";
-      }
+        function closeModal() {
+          const modal = document.getElementById("certificateModal");
+          const modalContent = document.getElementById("modalContent");
 
-      function closeModal() {
-        const modal = document.getElementById("certificateModal");
-        const modalContent = document.getElementById("modalContent");
+          modal.style.opacity = "0";
+          modal.style.pointerEvents = "none";
+          modalContent.style.transform = "scale(0.95)";
+        }
 
-        modal.style.opacity = "0";
-        modal.style.pointerEvents = "none";
-        modalContent.style.transform = "scale(0.95)";
-      }
+        // Scroll animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
 
-      // Scroll animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".fade-in-up").forEach((el) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        observer.observe(el);
-      });
-
-      // Animate progress bars when they come into view
-      const progressObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const progressBar = entry.target.querySelector(".progress-bar");
-            if (progressBar) {
-              progressBar.style.animation = "skillBar 2s ease-out forwards";
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
             }
-          }
-        });
-      }, observerOptions);
+          });
+        }, observerOptions);
 
-      document.querySelectorAll(".skill-card").forEach((el) => {
-        progressObserver.observe(el);
-      });
-    </script>
-  </body>
+        document.querySelectorAll(".fade-in-up").forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          observer.observe(el);
+        });
+
+        // Animate progress bars when they come into view
+        const progressObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const progressBar = entry.target.querySelector(".progress-bar");
+              if (progressBar) {
+                progressBar.style.animation = "skillBar 2s ease-out forwards";
+              }
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll(".skill-card").forEach((el) => {
+          progressObserver.observe(el);
+        });
+      </script>
+</body>
+
 </html>
