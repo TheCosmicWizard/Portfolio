@@ -1,564 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Experience - Atharv Kadam</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ["Oswald", "sans-serif"],
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience - Atharv Kadam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Oswald", "sans-serif"],
+          },
+          colors: {
+            emerald: {
+              500: "#10b981",
             },
-            colors: {
-              emerald: {
-                500: "#10b981",
-              },
-              violet: {
-                500: "#8b5cf6",
-              },
+            violet: {
+              500: "#8b5cf6",
             },
           },
         },
-      };
-    </script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+      },
+    };
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
 
-      @keyframes glow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-        50% {
-          box-shadow: 0 0 30px rgba(16, 185, 129, 0.6),
-            0 0 40px rgba(16, 185, 129, 0.3);
-        }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
       }
 
-      @keyframes slideIn {
-        from {
-          transform: translateX(-100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
+      50% {
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.6),
+          0 0 40px rgba(16, 185, 129, 0.3);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
       }
 
-      @keyframes fadeInUp {
-        from {
-          transform: translateY(30px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
       }
 
-      .float-animation {
-        animation: float 3s ease-in-out infinite;
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .glow-effect {
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    .slide-in {
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    body {
+      font-family: "Times New Roman", serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #22d3ee, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 3s ease-in-out infinite;
+    }
+
+    @keyframes gradient-shift {
+
+      0%,
+      100% {
+        filter: hue-rotate(0deg);
       }
 
-      .glow-effect {
-        animation: glow 2s ease-in-out infinite;
+      50% {
+        filter: hue-rotate(90deg);
       }
+    }
 
-      .slide-in {
-        animation: slideIn 0.6s ease-out forwards;
-      }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
 
-      .fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-      }
+    .menu-overlay {
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.8);
+    }
 
-      body {
-        font-family: "Times New Roman", serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      }
-
-      .gradient-text {
-        background: linear-gradient(45deg, #22d3ee, #8b5cf6, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: gradient-shift 3s ease-in-out infinite;
-      }
-
-      @keyframes gradient-shift {
-        0%,
-        100% {
-          filter: hue-rotate(0deg);
-        }
-        50% {
-          filter: hue-rotate(90deg);
-        }
-      }
-
-      .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .menu-overlay {
-        backdrop-filter: blur(10px);
-        background: rgba(15, 23, 42, 0.8);
-      }
-
-      .experience-card {
-        background: linear-gradient(
-          135deg,
+    .experience-card {
+      background: linear-gradient(135deg,
           rgba(30, 41, 59, 0.9) 0%,
-          rgba(51, 65, 85, 0.9) 100%
-        );
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        backdrop-filter: blur(20px);
-      }
+          rgba(51, 65, 85, 0.9) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(20px);
+    }
 
-      .section-divider {
-        background: linear-gradient(90deg, transparent, #22d3ee, transparent);
-        height: 2px;
-        margin: 2rem 0;
-      }
+    .section-divider {
+      background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+      height: 2px;
+      margin: 2rem 0;
+    }
 
-      .badge {
-        background: linear-gradient(
-          135deg,
+    .badge {
+      background: linear-gradient(135deg,
           rgba(34, 211, 238, 0.1),
-          rgba(139, 92, 246, 0.1)
-        );
-        border: 1px solid rgba(34, 211, 238, 0.3);
-        backdrop-filter: blur(10px);
-      }
+          rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      backdrop-filter: blur(10px);
+    }
 
-      .work-type-badge {
-        background: linear-gradient(
-          135deg,
+    .work-type-badge {
+      background: linear-gradient(135deg,
           rgba(16, 185, 129, 0.1),
-          rgba(34, 197, 94, 0.1)
-        );
-        border: 1px solid rgba(16, 185, 129, 0.3);
-      }
-    </style>
-  </head>
-  <body class="overflow-x-hidden min-h-screen">
-    <!-- Navigation Menu Button -->
-    <div class="fixed top-6 right-6 z-50">
-      <button
-        id="menuToggle"
-        class="w-12 h-12 bg-slate-800/90 backdrop-blur-lg rounded-full border border-slate-600/50 flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:bg-slate-700/90 glow-effect"
-      >
-        <div
-          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
-          id="line1"
-        ></div>
-        <div
-          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
-          id="line2"
-        ></div>
-        <div
-          class="w-6 h-0.5 bg-emerald-400 transition-all duration-300"
-          id="line3"
-        ></div>
-      </button>
-    </div>
+          rgba(34, 197, 94, 0.1));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+  </style>
+</head>
 
-    <!-- Sliding Menu -->
-    <div
-      id="slideMenu"
-      class="fixed top-0 right-0 h-full w-80 bg-slate-800/95 backdrop-blur-xl border-l border-slate-600/50 transform translate-x-full transition-transform duration-500 z-40"
-    >
-      <div class="p-8 h-full flex flex-col">
-        <h3 class="text-2xl font-display gradient-text mb-8 mt-16">
-          Navigation
-        </h3>
-        <nav class="flex flex-col gap-4">
-          <a
-            href="index.html"
-            class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30"
-            >🏠 Home</a
-          >
-          <a
-            href="education.html"
-            class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30"
-            >🎓 Education</a
-          >
-          <a
-            href="experience.html"
-            class="text-violet-400 bg-violet-400/10 border border-violet-400/30 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg"
-            >💼 Experience</a
-          >
-          <a
-            href="skills.html"
-            class="text-gray-300 hover:text-violet-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-violet-400/10 border border-transparent hover:border-violet-400/30"
-            >🛠️ Skills & Learning</a
-          >
-          <a
-            href="projects.html"
-            class="text-gray-300 hover:text-pink-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-pink-400/10 border border-transparent hover:border-pink-400/30"
-            >🚀 Projects</a
-          >
-          <a
-            href="contact.html"
-            class="text-gray-300 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-emerald-400/10 border border-transparent hover:border-emerald-400/30"
-            >📞 Contact</a
-          >
-        </nav>
+<body class="overflow-x-hidden min-h-screen">
+  <!-- Navigation Menu Button -->
+  <div class="fixed top-6 right-6 z-50">
+    <button id="menuToggle"
+      class="w-12 h-12 bg-slate-800/90 backdrop-blur-lg rounded-full border border-slate-600/50 flex flex-col items-center justify-center gap-1 transition-all duration-300 hover:bg-slate-700/90 glow-effect">
+      <div class="w-6 h-0.5 bg-emerald-400 transition-all duration-300" id="line1"></div>
+      <div class="w-6 h-0.5 bg-emerald-400 transition-all duration-300" id="line2"></div>
+      <div class="w-6 h-0.5 bg-emerald-400 transition-all duration-300" id="line3"></div>
+    </button>
+  </div>
+
+  <!-- Sliding Menu -->
+  <div id="slideMenu"
+    class="fixed top-0 right-0 h-full w-80 bg-slate-800/95 backdrop-blur-xl border-l border-slate-600/50 transform translate-x-full transition-transform duration-500 z-40">
+    <div class="p-8 h-full flex flex-col">
+      <h3 class="text-2xl font-display gradient-text mb-8 mt-16">
+        Navigation
+      </h3>
+      <nav class="flex flex-col gap-4">
+        <a href="index.html"
+          class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30">
+          🏠 Home</a>
+        <a href="education.html"
+          class="text-gray-300 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30">
+          🎓 Education</a>
+        <a href="experience.html"
+          class="text-violet-400 bg-violet-400/10 border border-violet-400/30 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg">
+          💼 Experience</a>
+        <a href="skills.html"
+          class="text-gray-300 hover:text-violet-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-violet-400/10 border border-transparent hover:border-violet-400/30">
+          🛠️ Skills & Learning</a>
+        <a href="projects.html"
+          class="text-gray-300 hover:text-pink-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-pink-400/10 border border-transparent hover:border-pink-400/30">
+          🚀 Projects</a>
+        <a href="contact.html"
+          class="text-gray-300 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-emerald-400/10 border border-transparent hover:border-emerald-400/30">
+          📞 Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Menu Overlay -->
+  <div id="menuOverlay"
+    class="fixed inset-0 menu-overlay opacity-0 pointer-events-none transition-opacity duration-500 z-30"></div>
+
+  <!-- Background particles -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-400 rounded-full opacity-30 float-animation"></div>
+    <div class="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 float-animation"
+      style="animation-delay: 1s"></div>
+    <div class="absolute top-1/2 right-1/3 w-3 h-3 bg-violet-500 rounded-full opacity-20 float-animation"
+      style="animation-delay: 2s"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-pink-400 rounded-full opacity-25 float-animation"
+      style="animation-delay: 1.5s"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="min-h-screen py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16 slide-in">
+        <h1 class="text-5xl md:text-7xl font-display gradient-text mb-6">
+          Experience
+        </h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          My professional journey, internships, and extracurricular activities
+        </p>
       </div>
-    </div>
 
-    <!-- Menu Overlay -->
-    <div
-      id="menuOverlay"
-      class="fixed inset-0 menu-overlay opacity-0 pointer-events-none transition-opacity duration-500 z-30"
-    ></div>
+      <!-- Job Experience Section -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="text-3xl font-display text-cyan-400">
+            💼 Job Experience
+          </h2>
+          <div class="flex-1 section-divider"></div>
+        </div>
 
-    <!-- Background particles -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-      <div
-        class="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-400 rounded-full opacity-30 float-animation"
-      ></div>
-      <div
-        class="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 float-animation"
-        style="animation-delay: 1s"
-      ></div>
-      <div
-        class="absolute top-1/2 right-1/3 w-3 h-3 bg-violet-500 rounded-full opacity-20 float-animation"
-        style="animation-delay: 2s"
-      ></div>
-      <div
-        class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-pink-400 rounded-full opacity-25 float-animation"
-        style="animation-delay: 1.5s"
-      ></div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="min-h-screen py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-16 slide-in">
-          <h1 class="text-5xl md:text-7xl font-display gradient-text mb-6">
-            Experience
-          </h1>
-          <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-            My professional journey, internships, and extracurricular activities
+        <div class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up text-center">
+          <div class="text-6xl mb-4">🚀</div>
+          <h3 class="text-2xl font-display text-white mb-2">
+            Ready for New Opportunities
+          </h3>
+          <p class="text-gray-300 text-lg">
+            Currently seeking internships and entry-level positions to apply
+            my skills and contribute to innovative projects
           </p>
-        </div>
-
-        <!-- Job Experience Section -->
-        <div class="mb-12">
-          <div class="flex items-center gap-4 mb-8">
-            <h2 class="text-3xl font-display text-cyan-400">
-              💼 Job Experience
-            </h2>
-            <div class="flex-1 section-divider"></div>
-          </div>
-
-          <div
-            class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up text-center"
-          >
-            <div class="text-6xl mb-4">🚀</div>
-            <h3 class="text-2xl font-display text-white mb-2">
-              Ready for New Opportunities
-            </h3>
-            <p class="text-gray-300 text-lg">
-              Currently seeking internships and entry-level positions to apply
-              my skills and contribute to innovative projects
-            </p>
-            <div class="mt-4">
-              <span class="badge px-4 py-2 rounded-full text-cyan-400"
-                >Open to Work</span
-              >
-            </div>
+          <div class="mt-4">
+            <span class="badge px-4 py-2 rounded-full text-cyan-400">Open to Work</span>
           </div>
         </div>
+      </div>
 
-        <!-- Internships Section -->
-        <div class="mb-12">
-          <div class="flex items-center gap-4 mb-8">
-            <h2 class="text-3xl font-display text-violet-400">
-              🎯 Internships
-            </h2>
-            <div class="flex-1 section-divider"></div>
-          </div>
+      <!-- Internships Section -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="text-3xl font-display text-violet-400">
+            🎯 Internships
+          </h2>
+          <div class="flex-1 section-divider"></div>
+        </div>
 
-          <!-- AICTE Google AI/ML Internship -->
-          <div
-            class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up mb-6"
-            style="animation-delay: 0.2s"
-          >
-            <div class="flex items-start gap-6">
-              <div
-                class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-green-500 flex items-center justify-center"
-              >
-                <span class="text-3xl">🤖</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 class="text-2xl font-display text-white mb-2">
-                      AI/ML Virtual Internship
-                    </h3>
-                    <p class="text-yellow-400 text-lg font-semibold mb-2">
-                      AICTE - Google Partnership Program
-                    </p>
-                    <div
-                      class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap"
-                    >
-                      <span class="bg-violet-400/10 px-3 py-1 rounded-full"
-                        >Duration: 3 Months</span
-                      >
-                      <span
-                        class="work-type-badge px-3 py-1 rounded-full text-emerald-400"
-                        >Virtual</span
-                      >
-                      <span
-                        class="bg-blue-400/10 text-blue-400 px-3 py-1 rounded-full"
-                        >2024</span
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="space-y-3">
-                  <div class="text-gray-300">
-                    <p class="mb-2">
-                      🧠 <strong class="text-cyan-400">Focus:</strong>
-                      Machine Learning, Artificial Intelligence, Data Science
-                    </p>
-                    <p class="mb-2">
-                      💻
-                      <strong class="text-emerald-400">Skills Gained:</strong>
-                      Python, TensorFlow, Data Analysis, ML Algorithms
-                    </p>
-                    <p class="mb-2">
-                      🌐 <strong class="text-pink-400">Type:</strong>
-                      Remote Learning & Hands-on Projects
-                    </p>
-                    <p>
-                      🏆 <strong class="text-yellow-400">Achievement:</strong>
-                      Completed comprehensive AI/ML curriculum with practical
-                      implementations
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <!-- AICTE Google AI/ML Internship -->
+        <div class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up mb-6"
+          style="animation-delay: 0.2s">
+          <div class="flex items-start gap-6">
+            <div
+              class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-green-500 flex items-center justify-center">
+              <span class="text-3xl">🤖</span>
             </div>
-          </div>
-
-          <!-- Android Development Internship -->
-          <div
-            class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up"
-            style="animation-delay: 0.4s"
-          >
-            <div class="flex items-start gap-6">
-              <div
-                class="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center"
-              >
-                <span class="text-3xl">📱</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 class="text-2xl font-display text-white mb-2">
-                      Android Development Internship
-                    </h3>
-                    <p class="text-yellow-400 text-lg font-semibold mb-2">
-                      AICTE - Google Partnership Program
-                    </p>
-                    <div
-                      class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap"
-                    >
-                      <span class="bg-violet-400/10 px-3 py-1 rounded-full"
-                        >Duration: 3 Months</span
-                      >
-                      <span
-                        class="work-type-badge px-3 py-1 rounded-full text-emerald-400"
-                        >Virtual</span
-                      >
-                      <span
-                        class="bg-blue-400/10 text-blue-400 px-3 py-1 rounded-full"
-                        >2024</span
-                      >
-                    </div>
+            <div class="flex-1">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h3 class="text-2xl font-display text-white mb-2">
+                    AI/ML Virtual Internship
+                  </h3>
+                  <p class="text-yellow-400 text-lg font-semibold mb-2">
+                    AICTE - Google Partnership Program
+                  </p>
+                  <div class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap">
+                    <span class="bg-violet-400/10 px-3 py-1 rounded-full">Duration: 3 Months</span>
+                    <span class="work-type-badge px-3 py-1 rounded-full text-emerald-400">Virtual</span>
+                    <span class="bg-blue-400/10 text-blue-400 px-3 py-1 rounded-full">2024</span>
                   </div>
                 </div>
-                <div class="space-y-3">
-                  <div class="text-gray-300">
-                    <p class="mb-2">
-                      📱 <strong class="text-cyan-400">Focus:</strong>
-                      Android App Development, Mobile UI/UX, Java/Kotlin
-                    </p>
-                    <p class="mb-2">
-                      💻
-                      <strong class="text-emerald-400">Skills Gained:</strong>
-                      Android Studio, Firebase, RESTful APIs, Material Design
-                    </p>
-                    <p class="mb-2">
-                      🚀 <strong class="text-pink-400">Projects:</strong>
-                      Built functional Android applications with modern features
-                    </p>
-                    <p>
-                      🏆 <strong class="text-yellow-400">Achievement:</strong>
-                      Successfully developed and deployed mobile applications
-                    </p>
-                  </div>
+              </div>
+              <div class="space-y-3">
+                <div class="text-gray-300">
+                  <p class="mb-2">
+                    🧠 <strong class="text-cyan-400">Focus:</strong>
+                    Machine Learning, Artificial Intelligence, Data Science
+                  </p>
+                  <p class="mb-2">
+                    💻
+                    <strong class="text-emerald-400">Skills Gained:</strong>
+                    Python, TensorFlow, Data Analysis, ML Algorithms
+                  </p>
+                  <p class="mb-2">
+                    🌐 <strong class="text-pink-400">Type:</strong>
+                    Remote Learning & Hands-on Projects
+                  </p>
+                  <p>
+                    🏆 <strong class="text-yellow-400">Achievement:</strong>
+                    Completed comprehensive AI/ML curriculum with practical
+                    implementations
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Extracurricular Activities Section -->
-        <div class="mb-12">
-          <div class="flex items-center gap-4 mb-8">
-            <h2 class="text-3xl font-display text-emerald-400">
-              🌟 Extracurricular Activities
-            </h2>
-            <div class="flex-1 section-divider"></div>
-          </div>
-
-          <!-- CISCO Tech Club -->
-          <div
-            class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up mb-6"
-            style="animation-delay: 0.6s"
-          >
-            <div class="flex items-start gap-6">
-              <div
-                class="w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden"
-              >
-                <img
-                  src="IMG/CISCO.png"
-                  alt="CISCO"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 class="text-2xl font-display text-white mb-2">
-                      Member of Design Team
-                    </h3>
-                    <p class="text-yellow-400 text-lg font-semibold mb-2">
-                      CISCO - VIIT
-                    </p>
-                    <div
-                      class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap"
-                    >
-                      <span class="bg-violet-400/10 px-3 py-1 rounded-full"
-                        >Oct 2024 - Present</span
-                      >
-                      <span
-                        class="work-type-badge px-3 py-1 rounded-full text-emerald-400"
-                        >Active Member</span
-                      >
-                      <span
-                        class="bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-full"
-                        >VIIT, Pune</span
-                      >
-                    </div>
+        <!-- Android Development Internship -->
+        <div class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up"
+          style="animation-delay: 0.4s">
+          <div class="flex items-start gap-6">
+            <div
+              class="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center">
+              <span class="text-3xl">📱</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h3 class="text-2xl font-display text-white mb-2">
+                    Android Development Internship
+                  </h3>
+                  <p class="text-yellow-400 text-lg font-semibold mb-2">
+                    AICTE - Google Partnership Program
+                  </p>
+                  <div class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap">
+                    <span class="bg-violet-400/10 px-3 py-1 rounded-full">Duration: 3 Months</span>
+                    <span class="work-type-badge px-3 py-1 rounded-full text-emerald-400">Virtual</span>
+                    <span class="bg-blue-400/10 text-blue-400 px-3 py-1 rounded-full">2024</span>
                   </div>
                 </div>
-                <div class="space-y-3">
-                  <div class="text-gray-300">
-                    <p class="mb-2">
-                      🌐 <strong class="text-cyan-400">Focus:</strong>
-                      Networking, Cybersecurity, Cloud Computing, Tech Workshops
-                    </p>
-                    <p class="mb-2">
-                      🤝 <strong class="text-emerald-400">Activities:</strong>
-                      Technical seminars, Hands-on labs, Peer learning sessions
-                    </p>
-                    <p class="mb-2">
-                      📚 <strong class="text-pink-400">Learning:</strong>
-                      Industry-standard networking protocols and security
-                      practices
-                    </p>
-                    <p>
-                      🏆 <strong class="text-yellow-400">Impact:</strong>
-                      Enhanced technical knowledge and leadership skills
-                    </p>
-                  </div>
+              </div>
+              <div class="space-y-3">
+                <div class="text-gray-300">
+                  <p class="mb-2">
+                    📱 <strong class="text-cyan-400">Focus:</strong>
+                    Android App Development, Mobile UI/UX, Java/Kotlin
+                  </p>
+                  <p class="mb-2">
+                    💻
+                    <strong class="text-emerald-400">Skills Gained:</strong>
+                    Android Studio, Firebase, RESTful APIs, Material Design
+                  </p>
+                  <p class="mb-2">
+                    🚀 <strong class="text-pink-400">Projects:</strong>
+                    Built functional Android applications with modern features
+                  </p>
+                  <p>
+                    🏆 <strong class="text-yellow-400">Achievement:</strong>
+                    Successfully developed and deployed mobile applications
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <!-- Hackathon VIIT -->
-          <div
-            class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up"
-            style="animation-delay: 0.8s"
-          >
-            <div class="flex items-start gap-6">
-              <div
-                class="w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden"
-              >
-                <img
-                  src="IMG/HACKATHON.jpg"
-                  alt="CISCO"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 class="text-2xl font-display text-white mb-2">
-                      Co-Head of Design Team
-                    </h3>
-                    <p class="text-yellow-400 text-lg font-semibold mb-2">
-                      Hackathon VIIT
-                    </p>
-                    <div
-                      class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap"
-                    >
-                      <span class="bg-violet-400/10 px-3 py-1 rounded-full"
-                        >Oct 2024 - Present</span
-                      >
-                      <span
-                        class="work-type-badge px-3 py-1 rounded-full text-emerald-400"
-                        >Active Member</span
-                      >
-                      <span
-                        class="bg-pink-400/10 text-pink-400 px-3 py-1 rounded-full"
-                        >VIIT, Pune</span
-                      >
-                    </div>
+      <!-- Extracurricular Activities Section -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="text-3xl font-display text-emerald-400">
+            🌟 Extracurricular Activities
+          </h2>
+          <div class="flex-1 section-divider"></div>
+        </div>
+
+        <!-- CISCO Tech Club -->
+        <div class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up mb-6"
+          style="animation-delay: 0.6s">
+          <div class="flex items-start gap-6">
+            <div class="w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden">
+              <img src="IMG/CISCO.png" alt="CISCO" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h3 class="text-2xl font-display text-white mb-2">
+                    Member of Design Team
+                  </h3>
+                  <p class="text-yellow-400 text-lg font-semibold mb-2">
+                    CISCO - VIIT
+                  </p>
+                  <div class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap">
+                    <span class="bg-violet-400/10 px-3 py-1 rounded-full">Oct 2024 - Present</span>
+                    <span class="work-type-badge px-3 py-1 rounded-full text-emerald-400">Active Member</span>
+                    <span class="bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-full">VIIT, Pune</span>
                   </div>
                 </div>
-                <div class="space-y-3">
-                  <div class="text-gray-300">
-                    <p class="mb-2">
-                      💡 <strong class="text-cyan-400">Focus:</strong>
-                      Rapid prototyping, Problem-solving, Innovation, Team
-                      collaboration
-                    </p>
-                    <p class="mb-2">
-                      🚀 <strong class="text-emerald-400">Skills:</strong>
-                      Quick development, Presentation, Time management, Creative
-                      thinking
-                    </p>
-                    <p class="mb-2">
-                      🔥 <strong class="text-pink-400">Experience:</strong>
-                      Intense coding sessions, Real-world problem solving
-                    </p>
-                    <p>
-                      🏆 <strong class="text-yellow-400">Growth:</strong>
-                      Enhanced coding speed, teamwork, and innovative thinking
-                    </p>
+              </div>
+              <div class="space-y-3">
+                <div class="text-gray-300">
+                  <p class="mb-2">
+                    🌐 <strong class="text-cyan-400">Focus:</strong>
+                    Networking, Cybersecurity, Cloud Computing, Tech Workshops
+                  </p>
+                  <p class="mb-2">
+                    🤝 <strong class="text-emerald-400">Activities:</strong>
+                    Technical seminars, Hands-on labs, Peer learning sessions
+                  </p>
+                  <p class="mb-2">
+                    📚 <strong class="text-pink-400">Learning:</strong>
+                    Industry-standard networking protocols and security
+                    practices
+                  </p>
+                  <p>
+                    🏆 <strong class="text-yellow-400">Impact:</strong>
+                    Enhanced technical knowledge and leadership skills
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hackathon VIIT -->
+        <div class="experience-card rounded-3xl p-8 card-hover transition-all duration-300 fade-in-up"
+          style="animation-delay: 0.8s">
+          <div class="flex items-start gap-6">
+            <div class="w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden">
+              <img src="IMG/HACKATHON.jpg" alt="CISCO" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h3 class="text-2xl font-display text-white mb-2">
+                    Co-Head of Design Team
+                  </h3>
+                  <p class="text-yellow-400 text-lg font-semibold mb-2">
+                    Hackathon VIIT
+                  </p>
+                  <div class="flex items-center gap-4 text-violet-400 mb-4 flex-wrap">
+                    <span class="bg-violet-400/10 px-3 py-1 rounded-full">Oct 2024 - Present</span>
+                    <span class="work-type-badge px-3 py-1 rounded-full text-emerald-400">Active Member</span>
+                    <span class="bg-pink-400/10 text-pink-400 px-3 py-1 rounded-full">VIIT, Pune</span>
                   </div>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="text-gray-300">
+                  <p class="mb-2">
+                    💡 <strong class="text-cyan-400">Focus:</strong>
+                    Rapid prototyping, Problem-solving, Innovation, Team
+                    collaboration
+                  </p>
+                  <p class="mb-2">
+                    🚀 <strong class="text-emerald-400">Skills:</strong>
+                    Quick development, Presentation, Time management, Creative
+                    thinking
+                  </p>
+                  <p class="mb-2">
+                    🔥 <strong class="text-pink-400">Experience:</strong>
+                    Intense coding sessions, Real-world problem solving
+                  </p>
+                  <p>
+                    🏆 <strong class="text-yellow-400">Growth:</strong>
+                    Enhanced coding speed, teamwork, and innovative thinking
+                  </p>
                 </div>
               </div>
             </div>
@@ -566,63 +468,65 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <script>
-      const menuToggle = document.getElementById("menuToggle");
-      const slideMenu = document.getElementById("slideMenu");
-      const menuOverlay = document.getElementById("menuOverlay");
-      const line1 = document.getElementById("line1");
-      const line2 = document.getElementById("line2");
-      const line3 = document.getElementById("line3");
-      let isMenuOpen = false;
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const slideMenu = document.getElementById("slideMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
+    const line1 = document.getElementById("line1");
+    const line2 = document.getElementById("line2");
+    const line3 = document.getElementById("line3");
+    let isMenuOpen = false;
 
-      function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
 
-        if (isMenuOpen) {
-          slideMenu.style.transform = "translateX(0)";
-          menuOverlay.style.opacity = "1";
-          menuOverlay.style.pointerEvents = "auto";
+      if (isMenuOpen) {
+        slideMenu.style.transform = "translateX(0)";
+        menuOverlay.style.opacity = "1";
+        menuOverlay.style.pointerEvents = "auto";
 
-          // Animate hamburger to X
-          line1.style.transform = "rotate(45deg) translate(5px, 5px)";
-          line2.style.opacity = "0";
-          line3.style.transform = "rotate(-45deg) translate(7px, -6px)";
-        } else {
-          slideMenu.style.transform = "translateX(100%)";
-          menuOverlay.style.opacity = "0";
-          menuOverlay.style.pointerEvents = "none";
+        // Animate hamburger to X
+        line1.style.transform = "rotate(45deg) translate(5px, 5px)";
+        line2.style.opacity = "0";
+        line3.style.transform = "rotate(-45deg) translate(7px, -6px)";
+      } else {
+        slideMenu.style.transform = "translateX(100%)";
+        menuOverlay.style.opacity = "0";
+        menuOverlay.style.pointerEvents = "none";
 
-          // Animate X back to hamburger
-          line1.style.transform = "rotate(0) translate(0, 0)";
-          line2.style.opacity = "1";
-          line3.style.transform = "rotate(0) translate(0, 0)";
-        }
+        // Animate X back to hamburger
+        line1.style.transform = "rotate(0) translate(0, 0)";
+        line2.style.opacity = "1";
+        line3.style.transform = "rotate(0) translate(0, 0)";
       }
+    }
 
-      menuToggle.addEventListener("click", toggleMenu);
-      menuOverlay.addEventListener("click", toggleMenu);
+    menuToggle.addEventListener("click", toggleMenu);
+    menuOverlay.addEventListener("click", toggleMenu);
 
-      // Add scroll animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".fade-in-up").forEach((el) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        observer.observe(el);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
       });
-    </script>
-  </body>
+    }, observerOptions);
+
+    document.querySelectorAll(".fade-in-up").forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      observer.observe(el);
+    });
+  </script>
+</body>
+
 </html>
