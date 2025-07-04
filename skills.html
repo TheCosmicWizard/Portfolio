@@ -225,12 +225,12 @@
         <a href="education.html"
           class="text-gray-300 hover:text-yellow-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-yellow-400/10 border border-transparent hover:border-yellow-400/30">🎓
           Education</a>
-        <a href="skills.html"
-          class="text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg">🛠️
-          Skills & Learning</a>
         <a href="experience.html"
           class="text-gray-300 hover:text-violet-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-violet-400/10 border border-transparent hover:border-violet-400/30">💼
           Experience</a>
+        <a href="skills.html"
+          class="text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg">🛠️
+          Skills & Learning</a>
         <a href="projects.html"
           class="text-gray-300 hover:text-pink-400 cursor-pointer transition-all duration-300 hover:scale-105 px-4 py-3 rounded-lg hover:bg-pink-400/10 border border-transparent hover:border-pink-400/30">🚀
           Projects</a>
@@ -441,11 +441,9 @@
               </div>
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">
-              Python for Everybody
+              Introduction to Python
             </h3>
-            <p class="text-gray-400 text-sm mb-3">
-              University of Michigan - Coursera
-            </p>
+            <p class="text-gray-400 text-sm mb-3">Infosys - Springboard</p>
             <div class="flex items-center justify-between">
               <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
               <span class="text-gray-500 text-xs">2023</span>
@@ -459,15 +457,15 @@
               <div
                 class="w-full h-40 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
                 <div class="text-center text-white">
-                  <div class="text-3xl mb-2">💻</div>
-                  <h4 class="font-bold">Web Development</h4>
+                  <div class="text-3xl mb-2">☕</div>
+                  <h4 class="font-bold">Java Programming</h4>
                 </div>
               </div>
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">
-              HTML, CSS & JavaScript
+              Data Structures and Algorithms in Java
             </h3>
-            <p class="text-gray-400 text-sm mb-3">FreeCodeCamp</p>
+            <p class="text-gray-400 text-sm mb-3">Infosys - Springboard</p>
             <div class="flex items-center justify-between">
               <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
               <span class="text-gray-500 text-xs">2023</span>
@@ -481,15 +479,15 @@
               <div
                 class="w-full h-40 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
                 <div class="text-center text-white">
-                  <div class="text-3xl mb-2">☕</div>
-                  <h4 class="font-bold">Java Programming</h4>
+                  <div class="text-3xl mb-2">💻</div>
+                  <h4 class="font-bold">Linux Operating System</h4>
                 </div>
               </div>
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">
-              Java Fundamentals
+              Linux for Beginners
             </h3>
-            <p class="text-gray-400 text-sm mb-3">Oracle Academy</p>
+            <p class="text-gray-400 text-sm mb-3">Infosys - Springboard</p>
             <div class="flex items-center justify-between">
               <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs">Completed</span>
               <span class="text-gray-500 text-xs">2024</span>
@@ -652,7 +650,7 @@
       <div id="certificateModal"
         class="fixed inset-0 certificate-modal opacity-0 pointer-events-none transition-opacity duration-500 z-50 flex items-center justify-center p-4">
         <div
-          class="max-w-4xl w-full bg-slate-800/95 backdrop-blur-xl rounded-3xl border border-slate-600/50 p-8 transform scale-95 transition-transform duration-500"
+          class="max-w-4xl w-full bg-slate-800/95 backdrop-blur-xl rounded-3xl border border-slate-600/50 p-8 mb-4 transform scale-95 transition-transform duration-500"
           id="modalContent">
           <div class="flex justify-between items-start mb-6">
             <h3 class="text-2xl font-display gradient-text" id="modalTitle">
@@ -667,7 +665,7 @@
           <div class="grid md:grid-cols-2 gap-8">
             <div>
               <div
-                class="certificate-image w-full h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-4"
+                class="certificate-image w-full h-92 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex justify-center mb-2"
                 id="modalImage">
                 <div class="text-center text-white">
                   <div class="text-6xl mb-4">🏆</div>
@@ -750,49 +748,51 @@
         // Certificate Modal Functions
         const certificateData = {
           cert1: {
-            title: "Python for Everybody Specialization",
-            description:
-              "Comprehensive Python programming course covering data structures, web scraping, databases, and data visualization. Learned to write programs that collect, clean, analyze, and visualize data.",
+            title: "Introduction to Python",
+            description: "Foundational Python programming course covering basic syntax, programming concepts, and problem-solving techniques. Learned fundamental programming principles and Python-specific features for building simple applications.",
             skills: [
               "• Python syntax and semantics",
-              "• Data structures and algorithms",
-              "• Web scraping with BeautifulSoup",
-              "• Database operations with SQLite",
-              "• Data visualization with matplotlib",
+              "• Variables and data types",
+              "• Control structures and loops",
+              "• Functions and modules",
+              "• Basic problem-solving techniques",
             ],
-            date: "2023",
+            date: "April 2024",
             gradient: "from-blue-500 to-purple-600",
-            icon: "🏆",
+            icon: "🐍",
+            image: "IMG/Certificate/Infosys - Python.jpg",
           },
+
           cert2: {
-            title: "Responsive Web Design",
-            description:
-              "Complete frontend development course focusing on modern web technologies. Built responsive websites using HTML5, CSS3, and JavaScript with emphasis on mobile-first design.",
+            title: "Data Structures and Algorithms in Java",
+            description: "Comprehensive computer science course focusing on core data structures and algorithm design. Covered implementation of various data structures in Java and analysis of algorithmic complexity for efficient problem-solving.",
             skills: [
-              "• Semantic HTML5 markup",
-              "• Advanced CSS3 and Flexbox",
-              "• Responsive design principles",
-              "• JavaScript DOM manipulation",
-              "• Cross-browser compatibility",
+              "• Object-oriented programming in Java",
+              "• Arrays, linked lists, stacks, and queues",
+              "• Trees, graphs, and hash tables",
+              "• Sorting and searching algorithms",
+              "• Algorithm complexity analysis",
             ],
-            date: "2023",
-            gradient: "from-green-500 to-teal-600",
-            icon: "💻",
-          },
-          cert3: {
-            title: "Java Programming Fundamentals",
-            description:
-              "Object-oriented programming course covering Java fundamentals, data structures, and software design patterns. Focus on building scalable and maintainable applications.",
-            skills: [
-              "• Object-oriented programming",
-              "• Java collections framework",
-              "• Exception handling",
-              "• File I/O operations",
-              "• Design patterns implementation",
-            ],
-            date: "2024",
+            date: "April 2024",
             gradient: "from-orange-500 to-red-600",
             icon: "☕",
+            image: "IMG/Certificate/Infosys - DSA Java.jpg",
+          },
+
+          cert3: {
+            title: "Linux for Beginners",
+            description: "Introduction to Linux operating system fundamentals covering command-line interface, file system management, and basic system administration. Gained practical skills in navigating and managing Linux environments.",
+            skills: [
+              "• Command-line interface proficiency",
+              "• File system navigation and permissions",
+              "• Process management and monitoring",
+              "• Basic shell scripting",
+              "• System administration fundamentals",
+            ],
+            date: "September 2024",
+            gradient: "from-green-500 to-teal-600",
+            icon: "🐧",
+            image: "IMG/Certificate/Infosys - Linux.jpg",
           },
           cert4: {
             title: "Google UX Design Professional",
@@ -860,9 +860,8 @@
             const modalImage = document.getElementById("modalImage");
             modalImage.className = `certificate-image w-full h-64 bg-gradient-to-br ${cert.gradient} rounded-lg flex items-center justify-center mb-4`;
             modalImage.innerHTML = `
-            <div class="text-center text-white">
-              <div class="text-6xl mb-4">${cert.icon}</div>
-              <h4 class="text-2xl font-bold">${cert.title}</h4>
+            <div class="text-center text-white mt-6">
+              <img src="${cert.image || 'IMG/Certificate/default.jpg'}" alt="${cert.title} Image" class="w-full h-full object-cover rounded-lg"> 
               <p class="text-lg opacity-90">Certificate of Completion</p>
             </div>
           `;
