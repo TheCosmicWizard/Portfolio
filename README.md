@@ -67,22 +67,3 @@ If you’d like to collaborate or just say hi—feel free to reach out or connec
 
 ---
 
-###  Make It Your Own
-
-- Add **project badges**, **animated GIFs**, or **screenshots** to showcase your work visually.
-- Link to your **live projects** or **demo videos**.
-- Feature **skills icons** (e.g., HTML, CSS, Figma) using shields or badge-style images.
-- Personalize the color theme to reflect your style!
-
----
-
-**Here's how this README flows visually:**
-
-- **Strong Heading** introducing you and your mission at a glance.
-- **Table of Basics** for quick context.
-- **Sections** for skills, projects, experience, and contact—kept concise and focused.
-- **Optional enhancements** like visual badges and media to make your portfolio stand out.
-- **Friendly closing** that reflects your collaborative spirit.
-
-Let me know if you’d like to add or emphasize any specific projects, include icons, or adapt sections for your GitHub profile!
-::contentReference[oaicite:0]{index=0}
