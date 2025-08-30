@@ -24,7 +24,10 @@ I’m a curious and driven **tech enthusiast** dedicated to solving real-world p
 ---
 
 ##  Skills & Learning Journey
-
+- **Skill**:
+  - Web Development, Data Analysis & Linux System Administration
+  - Programming Languages: Python, Java, MERN Stack (HTML5, CSS3, JavaScript, Node.js (Express.js), React.js, MongoDB)
+  - Tools: Git & GitHub, VS Code, Power BI, Tableau
 - **Technical Interests**:
   - UI/UX Design
   - Poster Creation
